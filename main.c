@@ -40,7 +40,13 @@ SemaphoreHandle_t menuVarsMutex;
 
 void user_init(void){
 
+  //Init Uart & I2C interfaces
   uart_set_baud(0, 115200);
+  i2c_init(I2C_BUS, SCL_PIN, SDA_PIN, I2C_FREQ_100K);
+
+  //!!REMOVE ME!!
+  procVars.procType = 2;
+
   /*Create Queues*/
   buttonQueue = xQueueCreate(20, sizeof(uint32_t));
 

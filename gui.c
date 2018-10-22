@@ -13,24 +13,37 @@
 #include <burnerControl.h>
 #include <inputs.h>
 
-
+/*STRINGS AND SUCH HERE*/
+/*---------------------*/
 const char menu0Strings[3][30] = {
     "InsertMenu0Strings"
 };
 
 //Static string definitions
 const char menu1Strings[3][30] = {
-    "START/STOP",
-    "RUN TYPE SELECT/SETTINGS",
-    "GENERAL SETTINGS",
+    "START / STOP",
+    "RUN TYPE",
+    "SETTINGS",
 };
 
-const char menu2Strings[4][30] = {
+const char menu2Strings[3][30] = {
     "PID",
-    "ON/OFF CONTROL",
-    "MANUAL 0-10 V CONTROL",
-    "TEST EXTRA"
+    "ON/OFF",
+    "MANUAL 0-10V",
 };
+
+
+static const uint8_t taChar[8] = {0x1c, 0x08,	0x08,	0x08,	0x02, 0x05, 0x07, 0x05};
+
+static const uint8_t rgChar[8] = {0x1c, 0x14, 0x18, 0x14, 0x03, 0x04, 0x05, 0x03};
+
+static const uint8_t etChar[8] = {0x1c, 0x10, 0x18, 0x10, 0x1F, 0x02, 0x02, 0x02};
+
+static const uint8_t onOff[8] = {0x0E, 0x0A, 0x0A, 0x00, 0x1B, 0x12, 0x1B, 0x12};
+
+/*---------------------*/
+
+
 
 //Preset bottom as doesn't want to init at 0
 
@@ -49,6 +62,32 @@ extern SemaphoreHandle_t menuVarsMutex;
 /*Thread draws to LCD based on index*/
 void drawDisplayThread(void *pvParameters){
 
+  //Setup LCD
+  hd44780_t lcd = {
+    .i2c_dev.bus = I2C_BUS,
+    .i2c_dev.addr = HD44780,
+    .font = HD44780_FONT_5X8,
+    .lines = 2,
+    .pins = {
+      .rs = 0,
+      .e  = 2,
+      .d4 = 4,
+      .d5 = 5,
+      .d6 = 6,
+      .d7 = 7,
+      .bl = 3
+    },
+    .backlight = true
+  };
+
+  hd44780_init(&lcd);
+  hd44780_upload_character(&lcd, 0, taChar);
+  hd44780_upload_character(&lcd, 1, rgChar);
+  hd44780_upload_character(&lcd, 2, etChar);
+  hd44780_upload_character(&lcd, 3, onOff);
+
+
+
     /*?!!?WAIT ON SEMAPHORE AND WRITE BASED ON THE MENU STATE?!!?*/
     /*data locked with mutex,*/
     if (printSemaphore != NULL){
@@ -65,6 +104,7 @@ void drawDisplayThread(void *pvParameters){
                 else{
                     printf("could not grab the menu mutex so not printing\r\n");
                 }
+                hd44780_clear(&lcd);
 
                 switch(menuLevel){
                     //Draw default view
@@ -116,28 +156,67 @@ void drawDisplayThread(void *pvParameters){
                         }
 
                         //Print current temp
-                        printf("Current temp = %d\t\t", print.currentTemp);
+                        hd44780_gotoxy(&lcd, 0, 0);
+                        hd44780_puts(&lcd, "Tmp  = ");
+                        char lcdBuffer[16];
+                        snprintf(lcdBuffer, 4, "%d   ", print.currentTemp);
+                        lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
+                        hd44780_gotoxy(&lcd, 7, 0);
+                        hd44780_puts(&lcd, lcdBuffer);
+                        //printf("Current temp = %d\t\t", print.currentTemp);
 
                         //print proc type
                         switch (print.procType){
+                            //PID
                             case 0:
-                                printf("PID\r\n");
+                              hd44780_gotoxy(&lcd, 13, 0);
+                              hd44780_puts(&lcd, "PID");
+                              hd44780_gotoxy(&lcd, 0, 1);
+                              hd44780_puts(&lcd, "\x08\x09\x0A  = ");
+
+                              snprintf(lcdBuffer, 4, "%d   ", print.tempOrVoltVar.targetTemp);
+                              lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
+                              hd44780_gotoxy(&lcd, 7, 1);
+                              hd44780_puts(&lcd, lcdBuffer);
+                                //printf("PID\r\n");
                             break;
+                            //On Off
                             case 1:
-                                printf("On/Off\r\n");
+                              hd44780_gotoxy(&lcd, 13, 0);
+                              hd44780_puts(&lcd, "O\x0B");
+                              hd44780_gotoxy(&lcd, 0, 1);
+                              hd44780_puts(&lcd, "\x08\x09\x0A  = ");
+
+                              snprintf(lcdBuffer, 4, "%d   ", print.tempOrVoltVar.targetTemp);
+                              lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
+                              hd44780_gotoxy(&lcd, 7, 1);
+                              hd44780_puts(&lcd, lcdBuffer);
+                                //printf("On/Off\r\n");
                             break;
+                            //print Manual votlage
                             case 2:
-                                printf("V Control\r\n");
+                              hd44780_gotoxy(&lcd, 13, 0);
+                              hd44780_puts(&lcd, "Man");
+                              hd44780_gotoxy(&lcd, 0, 1);
+                              hd44780_puts(&lcd, "Vout = ");
+
+                              snprintf(lcdBuffer, 5, "%2.2f   ", print.tempOrVoltVar.operatingVoltage);
+                              lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
+                              hd44780_gotoxy(&lcd, 7, 1);
+                              hd44780_puts(&lcd, lcdBuffer);
+                                //printf("V Control\r\n");
                             break;
                         }
-                        //print target temp/0-10V
-                        printf("Target Temp = %d\t\t", print.tempOrVoltVar.targetTemp);
+
+
+                        hd44780_gotoxy(&lcd, 13, 1);
                         //print run state
                         if (print.runState == 0){
-                            printf("PAUSE\r\n");
+                            hd44780_puts(&lcd, "   ");
                         }
                         else{
-                            printf("RUN\r\n");
+
+                            hd44780_puts(&lcd, "RUN");
                         }
                         break;
 
@@ -145,18 +224,35 @@ void drawDisplayThread(void *pvParameters){
                     case 1:
 
                         if (xSemaphoreTake(menuVarsMutex, 50) == pdTRUE){
-
+                            hd44780_clear(&lcd);
                             if (menuVars.selectorPos == 0){
+                                hd44780_gotoxy(&lcd, 0, 0);
+                                hd44780_puts(&lcd, ">");
+                                hd44780_gotoxy(&lcd, 1, 0);
+                                hd44780_puts(&lcd, menu1Strings[menuVars.topElement]);
+                                hd44780_gotoxy(&lcd, 1, 1);
+                                hd44780_puts(&lcd, menu1Strings[menuVars.bottomElement]);
+                                /*
                                 printf("!");
                                 printf("%s", menu1Strings[menuVars.topElement]);
                                 printf("!\r\n");
                                 printf("%s\r\n", menu1Strings[menuVars.bottomElement]);
+                                */
                             }
                             else{
+
+                                hd44780_gotoxy(&lcd, 1, 0);
+                                hd44780_puts(&lcd, menu1Strings[menuVars.topElement]);
+                                hd44780_gotoxy(&lcd, 0, 1);
+                                hd44780_puts(&lcd, ">");
+                                hd44780_gotoxy(&lcd, 1, 1);
+                                hd44780_puts(&lcd, menu1Strings[menuVars.bottomElement]);
+                              /*
                                 printf("%s\r\n", menu1Strings[menuVars.topElement]);
                                 printf("!");
                                 printf("%s", menu1Strings[menuVars.bottomElement]);
                                 printf("!\r\n");
+                                */
                             }
                             xSemaphoreGive(menuVarsMutex);
                         }
@@ -197,6 +293,9 @@ void drawDisplayThread(void *pvParameters){
                     case 4:
 
                         break;
+                    default:
+                      printf("you shouldn't be here!\r\n");
+                      break;
 
                 }
 

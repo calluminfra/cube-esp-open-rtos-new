@@ -1,6 +1,14 @@
 #ifndef GUI_H
 #define GUI_H
 
+//I2C addressing
+#define I2C_BUS 0
+#define SCL_PIN 5
+#define SDA_PIN 4
+//HD44780 Addr
+#define HD44780 0x27
+
+
 void drawDisplayThread(void *pvParameters);
 void updateParametersThread(void *pvParameters);
 void updateMenu(uint8_t buttonPressed);
