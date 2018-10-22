@@ -10,26 +10,26 @@
 #include <espressif/esp_common.h>
 #include <i2c/i2c.h>
 #include <stdio.h>
-//TEst
-#include <hd44780/hd44780.h>
-#include <task.h>
-#include <queue.h>
+// TEst
 #include <FreeRTOS.h>
-#include <esp8266.h>
-#include <semphr.h>
-#include <gui.h>
 #include <burnerControl.h>
+#include <esp8266.h>
+#include <gui.h>
+#include <hd44780/hd44780.h>
 #include <inputs.h>
+#include <queue.h>
+#include <semphr.h>
+#include <task.h>
 
 //
-//Handle Declarations
-//Queues
+// Handle Declarations
+// Queues
 QueueHandle_t buttonQueue;
 
-//Binary Semaphores
+// Binary Semaphores
 SemaphoreHandle_t printSemaphore;
 
-//Mutexes
+// Mutexes
 SemaphoreHandle_t pIDMutex;
 SemaphoreHandle_t onOffMutex;
 SemaphoreHandle_t vControlMutex;
@@ -37,24 +37,20 @@ SemaphoreHandle_t temperatureVarsMutex;
 SemaphoreHandle_t processVarsMutex;
 SemaphoreHandle_t menuVarsMutex;
 
+void user_init(void) {
 
-void user_init(void){
-
-  //Init Uart & I2C interfaces
+  // Init Uart & I2C interfaces
   uart_set_baud(0, 115200);
   i2c_init(I2C_BUS, SCL_PIN, SDA_PIN, I2C_FREQ_100K);
-
-  //!!REMOVE ME!!
-  procVars.procType = 2;
 
   /*Create Queues*/
   buttonQueue = xQueueCreate(20, sizeof(uint32_t));
 
-  //Create and take semaphore to initially block print thread
+  // Create and take semaphore to initially block print thread
   vSemaphoreCreateBinary(printSemaphore);
   xSemaphoreTake(printSemaphore, 10);
 
-  //Create Mutex's for handling access to datastructures
+  // Create Mutex's for handling access to datastructures
   pIDMutex = xSemaphoreCreateMutex();
   onOffMutex = xSemaphoreCreateMutex();
   vControlMutex = xSemaphoreCreateMutex();
@@ -62,7 +58,7 @@ void user_init(void){
   processVarsMutex = xSemaphoreCreateMutex();
   menuVarsMutex = xSemaphoreCreateMutex();
 
-  //Initialise threads
+  // Initialise threads
   xTaskCreate(buttonPollThread, "btnPoll", 256, &buttonQueue, 2, NULL);
   xTaskCreate(updateParametersThread, "updtParam", 1024, &buttonQueue, 2, NULL);
   xTaskCreate(drawDisplayThread, "drawDsp", 1024, NULL, 3, NULL);

@@ -96,8 +96,8 @@ build/program//main.o: \
  ../../FreeRTOS/Source/include/mpu_wrappers.h \
  ../../libc/xtensa-lx106-elf/include/reent.h \
  ../../FreeRTOS/Source/include/task.h \
- ../../FreeRTOS/Source/include/list.h \
- ../../extras/i2c/../hd44780/hd44780.h \
+ ../../FreeRTOS/Source/include/list.h burnerControl.h gui.h \
+ ../../extras/i2c/../hd44780/hd44780.h inputs.h \
  ../../FreeRTOS/Source/include/queue.h \
  ../../FreeRTOS/Source/include/semphr.h \
- ../../FreeRTOS/Source/include/queue.h gui.h burnerControl.h inputs.h
+ ../../FreeRTOS/Source/include/queue.h
