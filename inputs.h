@@ -4,6 +4,7 @@
 void thermocoupleReadThread(void *pvParameters);
 void buttonPollThread(void *pvParameters);
 
+#define MCP23016 0x26
 
 enum OperationType{
     defaultMessage,

@@ -28,6 +28,9 @@ void buttonPollThread(void *pvParameters) {
     GPIO 14 = Rotary Encoder A
     GPIO 15 = Rotary Encoder B
   */
+  // Set MCP registers as inputs
+  // Set IO Dir
+
 
   const uint8_t enterButton = 12;
   const uint8_t backButton = 13;

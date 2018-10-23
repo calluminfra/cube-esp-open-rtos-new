@@ -98,6 +98,7 @@ build/program//main.o: \
  ../../FreeRTOS/Source/include/task.h \
  ../../FreeRTOS/Source/include/list.h burnerControl.h gui.h \
  ../../extras/i2c/../hd44780/hd44780.h inputs.h \
+ ../../extras/i2c/../pcf8574/pcf8574.h \
  ../../FreeRTOS/Source/include/queue.h \
  ../../FreeRTOS/Source/include/semphr.h \
  ../../FreeRTOS/Source/include/queue.h

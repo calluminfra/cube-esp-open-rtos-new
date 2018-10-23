@@ -17,6 +17,7 @@
 #include <gui.h>
 #include <hd44780/hd44780.h>
 #include <inputs.h>
+#include <pcf8574/pcf8574.h>
 #include <queue.h>
 #include <semphr.h>
 #include <task.h>
@@ -42,6 +43,32 @@ void user_init(void) {
   // Init Uart & I2C interfaces
   uart_set_baud(0, 115200);
   i2c_init(I2C_BUS, SCL_PIN, SDA_PIN, I2C_FREQ_100K);
+  uint8_t devAddr = 0x20;
+  uint8_t dataBuffer[] = {0x06, 0xFF};
+  int err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 2);
+
+  if (err != 0) {
+    printf("oops\r\n");
+  }
+
+  dataBuffer[0] = 0;
+  err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
+  if (err != 0) {
+    printf("oops2\r\n");
+  }
+
+  err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
+  if (err != 0) {
+    printf("oops3\r\n");
+  } else {
+    printf("%2x\r\n", dataBuffer[0]);
+  }
+  /*
+  uint32_t deviceAddr = 0x20;
+  uint8_t i2cBuffer[] = {0x06, 0xFF};
+  pcf8574_port_write_buf(&deviceAddr, &i2cBuffer, 2);
+
+  pcf
 
   /*Create Queues*/
   buttonQueue = xQueueCreate(20, sizeof(uint32_t));
