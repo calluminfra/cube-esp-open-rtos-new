@@ -8,6 +8,7 @@
 #include <esp8266.h>
 #include <gui.h>
 #include <hd44780/hd44780.h>
+#include <i2cThread.h>
 #include <inputs.h>
 #include <queue.h>
 #include <semphr.h>
@@ -48,6 +49,7 @@ static const uint8_t onOff[8] = {0x0E, 0x0A, 0x0A, 0x00,
 
 // Binary Semaphores
 extern SemaphoreHandle_t printSemaphore;
+extern SemaphoreHandle_t i2CCountingSemaphore;
 
 // Mutex's
 extern SemaphoreHandle_t pIDMutex;
@@ -56,6 +58,9 @@ extern SemaphoreHandle_t vControlMutex;
 extern SemaphoreHandle_t temperatureVarsMutex;
 extern SemaphoreHandle_t processVarsMutex;
 extern SemaphoreHandle_t menuVarsMutex;
+extern SemaphoreHandle_t i2CMutex;
+
+extern QueueHandle_t xI2CQueue;
 
 /*Thread draws to LCD based on index*/
 void drawDisplayThread(void *pvParameters) {
@@ -75,6 +80,13 @@ void drawDisplayThread(void *pvParameters) {
   hd44780_upload_character(&lcd, 2, etChar);
   hd44780_upload_character(&lcd, 3, onOff);
 
+  procVars.procType = 2;
+
+  static struct I2CVarsStruct i2CVars;
+  static struct I2CVarsStruct *pI2CVars;
+  static struct I2CVarsStruct i2CVars2;
+  static struct I2CVarsStruct *pI2CVars2;
+
   /*?!!?WAIT ON SEMAPHORE AND WRITE BASED ON THE MENU STATE?!!?*/
   /*data locked with mutex,*/
   if (printSemaphore != NULL) {
@@ -90,7 +102,7 @@ void drawDisplayThread(void *pvParameters) {
         } else {
           printf("could not grab the menu mutex so not printing\r\n");
         }
-        hd44780_clear(&lcd);
+        // hd44780_clear(&lcd);
 
         // Declare structs
         union TargetTempOrVolt {
@@ -139,68 +151,91 @@ void drawDisplayThread(void *pvParameters) {
             printf("could not grab the process mutex so not printing\r\n");
           }
 
-          // Print current temp
-          hd44780_gotoxy(&lcd, 0, 0);
-          hd44780_puts(&lcd, "Tmp  = ");
-          char lcdBuffer[16];
-          snprintf(lcdBuffer, 4, "%d   ", print.currentTemp);
-          lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
-          hd44780_gotoxy(&lcd, 7, 0);
-          hd44780_puts(&lcd, lcdBuffer);
-          // printf("Current temp = %d\t\t", print.currentTemp);
+          char line1Buffer[18];
+          char line2Buffer[18];
+
+          snprintf(line1Buffer, sizeof(line1Buffer), "%s", "Temp = ");
+          snprintf(line1Buffer + strlen(line1Buffer),
+                   sizeof(line1Buffer) - strlen(line1Buffer), "%03d   ",
+                   print.currentTemp);
 
           // print proc type
           switch (print.procType) {
           // PID
           case 0:
-            hd44780_gotoxy(&lcd, 13, 0);
-            hd44780_puts(&lcd, "PID");
-            hd44780_gotoxy(&lcd, 0, 1);
-            hd44780_puts(&lcd, "\x08\x09\x0A  = ");
+            snprintf(line1Buffer + strlen(line1Buffer),
+                     sizeof(line1Buffer) - strlen(line1Buffer), "%s", "PID");
 
-            snprintf(lcdBuffer, 4, "%d   ", print.tempOrVoltVar.targetTemp);
-            lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
-            hd44780_gotoxy(&lcd, 7, 1);
-            hd44780_puts(&lcd, lcdBuffer);
-            // printf("PID\r\n");
+            snprintf(line2Buffer, sizeof(line2Buffer), "%s",
+                     "\x08\x09\x0A  = ");
+            snprintf(line2Buffer + strlen(line2Buffer),
+                     sizeof(line2Buffer) - strlen(line2Buffer), "%03d   ",
+                     print.tempOrVoltVar.targetTemp);
             break;
           // On Off
           case 1:
-            hd44780_gotoxy(&lcd, 13, 0);
-            hd44780_puts(&lcd, "O\x0B");
-            hd44780_gotoxy(&lcd, 0, 1);
-            hd44780_puts(&lcd, "\x08\x09\x0A  = ");
+            snprintf(line1Buffer + strlen(line1Buffer),
+                     sizeof(line1Buffer) - strlen(line1Buffer), "%s", "O\x0B ");
 
-            snprintf(lcdBuffer, 4, "%d   ", print.tempOrVoltVar.targetTemp);
-            lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
-            hd44780_gotoxy(&lcd, 7, 1);
-            hd44780_puts(&lcd, lcdBuffer);
-            // printf("On/Off\r\n");
+            snprintf(line2Buffer, sizeof(line2Buffer), "%s",
+                     "\x08\x09\x0A  = ");
+            snprintf(line2Buffer + strlen(line2Buffer),
+                     sizeof(line2Buffer) - strlen(line2Buffer), "%03d   ",
+                     print.tempOrVoltVar.targetTemp);
             break;
           // print Manual votlage
           case 2:
-            hd44780_gotoxy(&lcd, 13, 0);
-            hd44780_puts(&lcd, "Man");
-            hd44780_gotoxy(&lcd, 0, 1);
-            hd44780_puts(&lcd, "Vout = ");
+            snprintf(line1Buffer + strlen(line1Buffer),
+                     sizeof(line1Buffer) - strlen(line1Buffer), "%s", "Man");
 
-            snprintf(lcdBuffer, 5, "%2.2f   ",
+            snprintf(line2Buffer, sizeof(line2Buffer), "%s", "Vout = ");
+            snprintf(line2Buffer + strlen(line2Buffer),
+                     sizeof(line2Buffer) - strlen(line2Buffer), "%05.2f ",
                      print.tempOrVoltVar.operatingVoltage);
-            lcdBuffer[sizeof(lcdBuffer) - 1] = 0;
-            hd44780_gotoxy(&lcd, 7, 1);
-            hd44780_puts(&lcd, lcdBuffer);
-            // printf("V Control\r\n");
+
             break;
           }
 
-          hd44780_gotoxy(&lcd, 13, 1);
           // print run state
           if (print.runState == 0) {
-            hd44780_puts(&lcd, "   ");
+            strncat(line2Buffer, "    ", 4);
           } else {
-
-            hd44780_puts(&lcd, "RUN");
+            snprintf(line2Buffer + strlen(line2Buffer),
+                     sizeof(line2Buffer) - strlen(line2Buffer), "%s", "RUN");
           }
+
+          //  /*
+          snprintf(i2CVars.dataForI2CQueue, sizeof(i2CVars.dataForI2CQueue),
+                   "%s", line2Buffer);
+          // i2CVars.dataForI2CQueue = line2Buffer;
+          i2CVars.printRow = 1;
+          printf("Data pre queue L2 %s\r\n", i2CVars.dataForI2CQueue);
+          pI2CVars = &i2CVars;
+          xQueueSendToBack(xI2CQueue, &pI2CVars, 80);
+          // xSemaphoreGive(i2CCountingSemaphore);
+
+          snprintf(i2CVars2.dataForI2CQueue, sizeof(i2CVars2.dataForI2CQueue),
+                   "%s", line1Buffer);
+          // i2CVars.dataForI2CQueue = line1Buffer;
+          i2CVars2.printRow = 0;
+          pI2CVars2 = &i2CVars2;
+          xQueueSendToBack(xI2CQueue, &pI2CVars2, 80);
+          xSemaphoreGive(i2CCountingSemaphore);
+          //*/
+          /*
+          if (xSemaphoreTake(i2CMutex, 80) == pdTRUE) {
+            hd44780_gotoxy(&lcd, 0, 0);
+            hd44780_puts(&lcd, line1Buffer);
+            xSemaphoreGive(i2CCountingSemaphore);
+            xSemaphoreGive(i2CMutex)
+          }
+          if (xSemaphoreTake(i2CMutex, 80) == pdTRUE) {
+            hd44780_gotoxy(&lcd, 0, 1);
+            hd44780_puts(&lcd, line2Buffer);
+            xSemaphoreGive(i2CCountingSemaphore);
+            xSemaphoreGive(i2CMutex)
+          }
+*/
           break;
 
         // Draw main menu

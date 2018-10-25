@@ -97,7 +97,7 @@ build/program//main.o: \
  ../../libc/xtensa-lx106-elf/include/reent.h \
  ../../FreeRTOS/Source/include/task.h \
  ../../FreeRTOS/Source/include/list.h burnerControl.h gui.h \
- ../../extras/i2c/../hd44780/hd44780.h inputs.h \
+ ../../extras/i2c/../hd44780/hd44780.h i2cThread.h inputs.h \
  ../../extras/i2c/../pcf8574/pcf8574.h \
  ../../FreeRTOS/Source/include/queue.h \
  ../../FreeRTOS/Source/include/semphr.h \

@@ -8,6 +8,7 @@
 #include <esp8266.h>
 #include <gui.h>
 #include <hd44780/hd44780.h>
+#include <i2cThread.h>
 #include <inputs.h>
 #include <queue.h>
 #include <semphr.h>

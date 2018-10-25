@@ -8,10 +8,13 @@
 #include <esp8266.h>
 #include <gui.h>
 #include <hd44780/hd44780.h>
+#include <i2cThread.h>
 #include <inputs.h>
 #include <queue.h>
 #include <semphr.h>
 #include <task.h>
+
+extern SemaphoreHandle_t i2CCountingSemaphore;
 
 /*Thread reads temperature and places into current temp variable*/
 void thermocoupleReadThread(void *pvParameters) {
@@ -30,7 +33,6 @@ void buttonPollThread(void *pvParameters) {
   */
   // Set MCP registers as inputs
   // Set IO Dir
-
 
   const uint8_t enterButton = 12;
   const uint8_t backButton = 13;
@@ -63,19 +65,22 @@ void buttonPollThread(void *pvParameters) {
 
     /*!!SWITCH TO ISR!!*/
     if (gpio_read(enterButton) == 1 && selectStateHistory == 0) {
-      sentFromButtonPollThread.data.buttonOperation = 1;
-      pSentFromButtonPollThread = &sentFromButtonPollThread;
-      xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-      selectStateHistory = 1;
+      if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+        sentFromButtonPollThread.data.buttonOperation = 1;
+        pSentFromButtonPollThread = &sentFromButtonPollThread;
+        xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+        selectStateHistory = 1;
+      }
     } else if (gpio_read(enterButton) == 0 && selectStateHistory == 1) {
       selectStateHistory = 0;
     }
 
     if (gpio_read(backButton) == 1 && backStateMaskHistory == 0) {
-      sentFromButtonPollThread.data.buttonOperation = 2;
-      pSentFromButtonPollThread = &sentFromButtonPollThread;
-      xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-      backStateMaskHistory = 1;
+      if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+        sentFromButtonPollThread.data.buttonOperation = 2;
+        pSentFromButtonPollThread = &sentFromButtonPollThread;
+        backStateMaskHistory = 1;
+      }
     } else if (gpio_read(backButton) == 0 && backStateMaskHistory == 1) {
       backStateMaskHistory = 0;
     }
@@ -87,17 +92,21 @@ void buttonPollThread(void *pvParameters) {
       // Rotation was CCW
       uint8_t currentBState = gpio_read(rotaryB);
       if (currentBState == 0) {
-        sentFromButtonPollThread.data.buttonOperation = 4;
-        pSentFromButtonPollThread = &sentFromButtonPollThread;
-        xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+        if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+          sentFromButtonPollThread.data.buttonOperation = 4;
+          pSentFromButtonPollThread = &sentFromButtonPollThread;
+          xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+        }
         // Place message in queue for proc thread
       }
       // Rotation was CW
       else {
-        sentFromButtonPollThread.data.buttonOperation = 3;
-        pSentFromButtonPollThread = &sentFromButtonPollThread;
-        xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-        // Place message in queue for proc thread
+        if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+          sentFromButtonPollThread.data.buttonOperation = 3;
+          pSentFromButtonPollThread = &sentFromButtonPollThread;
+          xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+          // Place message in queue for proc thread
+        }
       }
     }
     previousAState = currentAState;
