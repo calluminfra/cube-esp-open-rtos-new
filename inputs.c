@@ -79,6 +79,7 @@ void buttonPollThread(void *pvParameters) {
       if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
         sentFromButtonPollThread.data.buttonOperation = 2;
         pSentFromButtonPollThread = &sentFromButtonPollThread;
+        xQueueSend(*queue, &pSentFromButtonPollThread, 0);
         backStateMaskHistory = 1;
       }
     } else if (gpio_read(backButton) == 0 && backStateMaskHistory == 1) {
@@ -96,6 +97,8 @@ void buttonPollThread(void *pvParameters) {
           sentFromButtonPollThread.data.buttonOperation = 4;
           pSentFromButtonPollThread = &sentFromButtonPollThread;
           xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+        } else {
+          printf("Couldn't access i2c counting semaphore\r\n");
         }
         // Place message in queue for proc thread
       }

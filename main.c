@@ -94,8 +94,11 @@ void user_init(void) {
   i2CMutex = xSemaphoreCreateMutex();
 
   // Initialise threads
-  xTaskCreate(buttonPollThread, "btnPoll", 1024, &buttonQueue, 2, NULL);
+
   xTaskCreate(updateParametersThread, "updtParam", 1024, &buttonQueue, 2, NULL);
   xTaskCreate(drawDisplayThread, "drawDsp", 4095, NULL, 2, NULL);
   xTaskCreate(i2CThread, "i2c", 4095, NULL, 1, NULL);
+  xTaskCreate(buttonPollThread, "btnPoll", 1024, &buttonQueue, 2, NULL);
+
+  enterNewMenu(0);
 }
