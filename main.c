@@ -32,6 +32,7 @@ QueueHandle_t xI2CQueue;
 
 // Counting Semaphores
 SemaphoreHandle_t i2CCountingSemaphore;
+SemaphoreHandle_t i2CCountingSemaphore2;
 
 // Binary Semaphores
 SemaphoreHandle_t printSemaphore;
@@ -51,28 +52,32 @@ void user_init(void) {
   // Test
   uart_set_baud(0, 115200);
   i2c_init(I2C_BUS, SCL_PIN, SDA_PIN, I2C_FREQ_100K);
+  i2c_set_clock_stretch(I2C_BUS, 300);
   /*
-  uint8_t devAddr = 0x20;
-  uint8_t dataBuffer[] = {0x06, 0xFF};
-  int err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 2);
+    uint8_t devAddr = 0x20;
+    uint8_t mCPBuffer[] = {0x06, 0xFF};
 
-  if (err != 0) {
-    printf("oops\r\n");
-  }
-
+    int err = i2c_slave_write(I2C_BUS, devAddr, NULL, &mCPBuffer, 2);
+    if (err != 0) {
+      printf("Error, MCP slave has not been set up as inputs\r\n");
+    } else {
+      printf("MCP setup correctly\r\n");
+    }
+  */
+  /*
   dataBuffer[0] = 0;
   err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
   if (err != 0) {
     printf("oops2\r\n");
   }
-
   err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
   if (err != 0) {
     printf("oops3\r\n");
   } else {
     printf("%2x\r\n", dataBuffer[0]);
   }
-*/
+  */
+
   /*Create Queues*/
   buttonQueue = xQueueCreate(20, sizeof(uint32_t));
   xI2CQueue = xQueueCreate(100, sizeof(struct I2CVarsStruct *));
@@ -83,6 +88,7 @@ void user_init(void) {
 
   // Create counting semaphore for use by I2C threads
   i2CCountingSemaphore = xSemaphoreCreateCounting(1, 1);
+  i2CCountingSemaphore2 = xSemaphoreCreateCounting(1, 1);
 
   // Create Mutex's for handling access to datastructures
   pIDMutex = xSemaphoreCreateMutex();

@@ -53,7 +53,7 @@ void buttonPollThread(void *pvParameters) {
 
   // Timing definitions for 10ms polls
   TickType_t lastWakeTime;
-  const TickType_t tickFreq = 10 / portTICK_PERIOD_MS;
+  const TickType_t tickFreq = 20 / portTICK_PERIOD_MS;
   lastWakeTime = xTaskGetTickCount();
 
   QueueHandle_t *queue = (QueueHandle_t *)pvParameters;

@@ -31,18 +31,6 @@ const char menu2Strings[3][30] = {
     "MANUAL 0-10V   ",
 };
 
-static const uint8_t taChar[8] = {0x1c, 0x08, 0x08, 0x08,
-                                  0x02, 0x05, 0x07, 0x05};
-
-static const uint8_t rgChar[8] = {0x1c, 0x14, 0x18, 0x14,
-                                  0x03, 0x04, 0x05, 0x03};
-
-static const uint8_t etChar[8] = {0x1c, 0x10, 0x18, 0x10,
-                                  0x1F, 0x02, 0x02, 0x02};
-
-static const uint8_t onOff[8] = {0x0E, 0x0A, 0x0A, 0x00,
-                                 0x1B, 0x12, 0x1B, 0x12};
-
 /*---------------------*/
 
 // Preset bottom as doesn't want to init at 0
@@ -64,21 +52,6 @@ extern QueueHandle_t xI2CQueue;
 
 /*Thread draws to LCD based on index*/
 void drawDisplayThread(void *pvParameters) {
-
-  // Setup LCD
-  hd44780_t lcd = {
-      .i2c_dev.bus = I2C_BUS,
-      .i2c_dev.addr = HD44780,
-      .font = HD44780_FONT_5X8,
-      .lines = 2,
-      .pins = {.rs = 0, .e = 2, .d4 = 4, .d5 = 5, .d6 = 6, .d7 = 7, .bl = 3},
-      .backlight = true};
-
-  hd44780_init(&lcd);
-  hd44780_upload_character(&lcd, 0, taChar);
-  hd44780_upload_character(&lcd, 1, rgChar);
-  hd44780_upload_character(&lcd, 2, etChar);
-  hd44780_upload_character(&lcd, 3, onOff);
 
   procVars.procType = 2;
 
@@ -209,7 +182,6 @@ void drawDisplayThread(void *pvParameters) {
                    "%s", line2Buffer);
           // i2CVars.dataForI2CQueue = line2Buffer;
           i2CVars.printRow = 1;
-          printf("Data pre queue L2 %s\r\n", i2CVars.dataForI2CQueue);
           pI2CVars = &i2CVars;
           xQueueSendToBack(xI2CQueue, &pI2CVars, 80);
           // xSemaphoreGive(i2CCountingSemaphore);
