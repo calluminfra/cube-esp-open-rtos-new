@@ -20,7 +20,9 @@ extern SemaphoreHandle_t i2CCountingSemaphore2;
 
 void i2CThread(void *pvParameters) {
   // Setup various I2C stuff HERE
-
+  TickType_t lastWakeTime;
+  const TickType_t xFreq = 20 / portTICK_PERIOD_MS;
+  lastWakeTime = xTaskGetTickCount();
   // Setup MCP23016 as inputs for all GP0
   uint8_t devAddr = 0x20;
   uint8_t dataBuffer[4] = {0x06, 0xFF, 0, 0};
@@ -60,7 +62,7 @@ void i2CThread(void *pvParameters) {
   extern QueueHandle_t xI2CQueue;
 
   while (1) {
-    if (xQueueReceive(xI2CQueue, &(rxI2CVars), 50)) {
+    if (xQueueReceive(xI2CQueue, &(rxI2CVars), 0)) {
       // uint8_t testVar1 = pollButtonsI2C();
       taskENTER_CRITICAL();
       printf("%s\r\n", rxI2CVars->dataForI2CQueue);
@@ -68,13 +70,14 @@ void i2CThread(void *pvParameters) {
       hd44780_puts(&lcd, rxI2CVars->dataForI2CQueue);
       taskEXIT_CRITICAL();
     }
+    vTaskDelayUntil(&lastWakeTime, xFreq);
     taskENTER_CRITICAL();
     dataBuffer[0] = 0;
     err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
     if (err != 0) {
       printf("Could address the slave to prep read\r\n");
     }
-    err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 2);
+    err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
     if (err != 0) {
       printf("couldn't read from slave\r\n");
     } else {

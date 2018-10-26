@@ -6422,883 +6422,883 @@ END GROUP
                 0x0000000040215ac0                buttonPollThread
  *fill*         0x0000000040215c5b        0x1 
  .text.i2CThread
-                0x0000000040215c5c      0x13b ./build/program.a(i2cThread.o)
-                                        0x1bf (size before relaxing)
+                0x0000000040215c5c      0x147 ./build/program.a(i2cThread.o)
+                                        0x1db (size before relaxing)
                 0x0000000040215c88                i2CThread
- *fill*         0x0000000040215d97        0x1 
- .text.set_scl  0x0000000040215d98       0x69 ./build/i2c.a(i2c.o)
+ *fill*         0x0000000040215da3        0x1 
+ .text.set_scl  0x0000000040215da4       0x69 ./build/i2c.a(i2c.o)
                                          0x85 (size before relaxing)
- *fill*         0x0000000040215e01        0x3 
+ *fill*         0x0000000040215e0d        0x3 
  .text.i2c_write_bit
-                0x0000000040215e04       0x71 ./build/i2c.a(i2c.o)
+                0x0000000040215e10       0x71 ./build/i2c.a(i2c.o)
                                          0x7d (size before relaxing)
- *fill*         0x0000000040215e75        0x3 
+ *fill*         0x0000000040215e81        0x3 
  .text.i2c_read_bit
-                0x0000000040215e78       0x57 ./build/i2c.a(i2c.o)
+                0x0000000040215e84       0x57 ./build/i2c.a(i2c.o)
                                          0x67 (size before relaxing)
- *fill*         0x0000000040215ecf        0x1 
+ *fill*         0x0000000040215edb        0x1 
  .text.i2c_set_frequency_hz
-                0x0000000040215ed0       0x7e ./build/i2c.a(i2c.o)
+                0x0000000040215edc       0x7e ./build/i2c.a(i2c.o)
                                          0x86 (size before relaxing)
-                0x0000000040215ed4                i2c_set_frequency_hz
- *fill*         0x0000000040215f4e        0x2 
+                0x0000000040215ee0                i2c_set_frequency_hz
+ *fill*         0x0000000040215f5a        0x2 
  .text.i2c_init_hz
-                0x0000000040215f50       0xea ./build/i2c.a(i2c.o)
+                0x0000000040215f5c       0xea ./build/i2c.a(i2c.o)
                                         0x116 (size before relaxing)
-                0x0000000040215f50                i2c_init_hz
- *fill*         0x000000004021603a        0x2 
+                0x0000000040215f5c                i2c_init_hz
+ *fill*         0x0000000040216046        0x2 
  .text.i2c_init
-                0x000000004021603c       0x32 ./build/i2c.a(i2c.o)
+                0x0000000040216048       0x32 ./build/i2c.a(i2c.o)
                                          0x39 (size before relaxing)
-                0x0000000040216044                i2c_init
- *fill*         0x000000004021606e        0x2 
+                0x0000000040216050                i2c_init
+ *fill*         0x000000004021607a        0x2 
  .text.i2c_set_clock_stretch
-                0x0000000040216070       0x10 ./build/i2c.a(i2c.o)
+                0x000000004021607c       0x10 ./build/i2c.a(i2c.o)
                                          0x14 (size before relaxing)
-                0x0000000040216070                i2c_set_clock_stretch
+                0x000000004021607c                i2c_set_clock_stretch
  .text.i2c_start
-                0x0000000040216080       0xa3 ./build/i2c.a(i2c.o)
+                0x000000004021608c       0xa3 ./build/i2c.a(i2c.o)
                                          0xb7 (size before relaxing)
-                0x0000000040216080                i2c_start
- *fill*         0x0000000040216123        0x1 
+                0x000000004021608c                i2c_start
+ *fill*         0x000000004021612f        0x1 
  .text.i2c_stop
-                0x0000000040216124       0x64 ./build/i2c.a(i2c.o)
+                0x0000000040216130       0x64 ./build/i2c.a(i2c.o)
                                          0x70 (size before relaxing)
-                0x0000000040216124                i2c_stop
+                0x0000000040216130                i2c_stop
  .text.i2c_bus_test
-                0x0000000040216188       0x71 ./build/i2c.a(i2c.o)
+                0x0000000040216194       0x71 ./build/i2c.a(i2c.o)
                                          0x91 (size before relaxing)
- *fill*         0x00000000402161f9        0x3 
+ *fill*         0x0000000040216205        0x3 
  .text.i2c_write
-                0x00000000402161fc       0x47 ./build/i2c.a(i2c.o)
+                0x0000000040216208       0x47 ./build/i2c.a(i2c.o)
                                          0x53 (size before relaxing)
-                0x00000000402161fc                i2c_write
- *fill*         0x0000000040216243        0x1 
+                0x0000000040216208                i2c_write
+ *fill*         0x000000004021624f        0x1 
  .text.i2c_read
-                0x0000000040216244       0x49 ./build/i2c.a(i2c.o)
+                0x0000000040216250       0x49 ./build/i2c.a(i2c.o)
                                          0x55 (size before relaxing)
-                0x0000000040216244                i2c_read
- *fill*         0x000000004021628d        0x3 
+                0x0000000040216250                i2c_read
+ *fill*         0x0000000040216299        0x3 
  .text.i2c_slave_write
-                0x0000000040216290       0xab ./build/i2c.a(i2c.o)
+                0x000000004021629c       0xab ./build/i2c.a(i2c.o)
                                          0xdb (size before relaxing)
-                0x0000000040216290                i2c_slave_write
- *fill*         0x000000004021633b        0x1 
+                0x000000004021629c                i2c_slave_write
+ *fill*         0x0000000040216347        0x1 
  .text.i2c_slave_read
-                0x000000004021633c       0xdb ./build/i2c.a(i2c.o)
+                0x0000000040216348       0xdb ./build/i2c.a(i2c.o)
                                         0x113 (size before relaxing)
-                0x000000004021633c                i2c_slave_read
- *fill*         0x0000000040216417        0x1 
+                0x0000000040216348                i2c_slave_read
+ *fill*         0x0000000040216423        0x1 
  .text.write_nibble
-                0x0000000040216418       0xa3 ./build/hd44780.a(hd44780.o)
+                0x0000000040216424       0xa3 ./build/hd44780.a(hd44780.o)
                                          0xaf (size before relaxing)
- *fill*         0x00000000402164bb        0x1 
+ *fill*         0x00000000402164c7        0x1 
  .text.write_byte
-                0x00000000402164bc       0x2f ./build/hd44780.a(hd44780.o)
+                0x00000000402164c8       0x2f ./build/hd44780.a(hd44780.o)
                                          0x3b (size before relaxing)
- *fill*         0x00000000402164eb        0x1 
+ *fill*         0x00000000402164f7        0x1 
  .text.hd44780_clear
-                0x00000000402164ec       0x20 ./build/hd44780.a(hd44780.o)
+                0x00000000402164f8       0x20 ./build/hd44780.a(hd44780.o)
                                          0x2c (size before relaxing)
-                0x00000000402164f0                hd44780_clear
+                0x00000000402164fc                hd44780_clear
  .text.hd44780_init
-                0x000000004021650c       0x83 ./build/hd44780.a(hd44780.o)
+                0x0000000040216518       0x83 ./build/hd44780.a(hd44780.o)
                                          0xbb (size before relaxing)
-                0x000000004021650c                hd44780_init
- *fill*         0x000000004021658f        0x1 
+                0x0000000040216518                hd44780_init
+ *fill*         0x000000004021659b        0x1 
  .text.hd44780_gotoxy
-                0x0000000040216590       0x3b ./build/hd44780.a(hd44780.o)
+                0x000000004021659c       0x3b ./build/hd44780.a(hd44780.o)
                                          0x43 (size before relaxing)
-                0x0000000040216594                hd44780_gotoxy
- *fill*         0x00000000402165cb        0x1 
+                0x00000000402165a0                hd44780_gotoxy
+ *fill*         0x00000000402165d7        0x1 
  .text.hd44780_puts
-                0x00000000402165cc       0x2d ./build/hd44780.a(hd44780.o)
+                0x00000000402165d8       0x2d ./build/hd44780.a(hd44780.o)
                                          0x35 (size before relaxing)
-                0x00000000402165cc                hd44780_puts
- *fill*         0x00000000402165f9        0x3 
+                0x00000000402165d8                hd44780_puts
+ *fill*         0x0000000040216605        0x3 
  .text.hd44780_upload_character
-                0x00000000402165fc       0x64 ./build/hd44780.a(hd44780.o)
+                0x0000000040216608       0x64 ./build/hd44780.a(hd44780.o)
                                          0x78 (size before relaxing)
-                0x00000000402165fc                hd44780_upload_character
+                0x0000000040216608                hd44780_upload_character
  .text.get_socket
-                0x0000000040216660       0x30 ./build/lwip.a(sockets.o)
+                0x000000004021666c       0x30 ./build/lwip.a(sockets.o)
                                          0x34 (size before relaxing)
  .text.lwip_sock_make_addr$isra$2
-                0x0000000040216690       0x65 ./build/lwip.a(sockets.o)
+                0x000000004021669c       0x65 ./build/lwip.a(sockets.o)
                                          0x71 (size before relaxing)
- *fill*         0x00000000402166f5        0x3 
+ *fill*         0x0000000040216701        0x3 
  .text.lwip_recv_tcp$isra$4
-                0x00000000402166f8      0x116 ./build/lwip.a(sockets.o)
+                0x0000000040216704      0x116 ./build/lwip.a(sockets.o)
                                         0x14a (size before relaxing)
- *fill*         0x000000004021680e        0x2 
+ *fill*         0x000000004021681a        0x2 
  .text.lwip_recvfrom_udp_raw$isra$5
-                0x0000000040216810       0xef ./build/lwip.a(sockets.o)
+                0x000000004021681c       0xef ./build/lwip.a(sockets.o)
                                         0x10b (size before relaxing)
- *fill*         0x00000000402168ff        0x1 
+ *fill*         0x000000004021690b        0x1 
  .text.lwip_close
-                0x0000000040216900       0xd0 ./build/lwip.a(sockets.o)
+                0x000000004021690c       0xd0 ./build/lwip.a(sockets.o)
                                         0x10f (size before relaxing)
-                0x0000000040216904                lwip_close
- *fill*         0x00000000402169d0        0x0 
+                0x0000000040216910                lwip_close
+ *fill*         0x00000000402169dc        0x0 
  .text.lwip_recvfrom
-                0x00000000402169d0       0xf0 ./build/lwip.a(sockets.o)
+                0x00000000402169dc       0xf0 ./build/lwip.a(sockets.o)
                                         0x124 (size before relaxing)
-                0x00000000402169d0                lwip_recvfrom
+                0x00000000402169dc                lwip_recvfrom
  .text.lwip_read
-                0x0000000040216ac0       0x18 ./build/lwip.a(sockets.o)
+                0x0000000040216acc       0x18 ./build/lwip.a(sockets.o)
                                          0x1c (size before relaxing)
-                0x0000000040216ac0                lwip_read
+                0x0000000040216acc                lwip_read
  .text.lwip_sendto
-                0x0000000040216ad8      0x122 ./build/lwip.a(sockets.o)
+                0x0000000040216ae4      0x122 ./build/lwip.a(sockets.o)
                                         0x16e (size before relaxing)
-                0x0000000040216ad8                lwip_sendto
- *fill*         0x0000000040216bfa        0x2 
+                0x0000000040216ae4                lwip_sendto
+ *fill*         0x0000000040216c06        0x2 
  .text.lwip_send
-                0x0000000040216bfc       0x94 ./build/lwip.a(sockets.o)
+                0x0000000040216c08       0x94 ./build/lwip.a(sockets.o)
                                          0xb4 (size before relaxing)
-                0x0000000040216bfc                lwip_send
+                0x0000000040216c08                lwip_send
  .text.lwip_write
-                0x0000000040216c90       0x14 ./build/lwip.a(sockets.o)
+                0x0000000040216c9c       0x14 ./build/lwip.a(sockets.o)
                                          0x18 (size before relaxing)
-                0x0000000040216c90                lwip_write
+                0x0000000040216c9c                lwip_write
  .text.netconn_close_shutdown
-                0x0000000040216ca4       0x3a ./build/lwip.a(api_lib.o)
+                0x0000000040216cb0       0x3a ./build/lwip.a(api_lib.o)
                                          0x46 (size before relaxing)
- *fill*         0x0000000040216cde        0x2 
+ *fill*         0x0000000040216cea        0x2 
  .text.netconn_delete
-                0x0000000040216ce0       0x47 ./build/lwip.a(api_lib.o)
+                0x0000000040216cec       0x47 ./build/lwip.a(api_lib.o)
                                          0x5b (size before relaxing)
-                0x0000000040216ce4                netconn_delete
- *fill*         0x0000000040216d27        0x1 
+                0x0000000040216cf0                netconn_delete
+ *fill*         0x0000000040216d33        0x1 
  .text.netconn_getaddr
-                0x0000000040216d28       0x42 ./build/lwip.a(api_lib.o)
+                0x0000000040216d34       0x42 ./build/lwip.a(api_lib.o)
                                          0x4a (size before relaxing)
-                0x0000000040216d2c                netconn_getaddr
- *fill*         0x0000000040216d6a        0x2 
+                0x0000000040216d38                netconn_getaddr
+ *fill*         0x0000000040216d76        0x2 
  .text.netconn_tcp_recvd
-                0x0000000040216d6c       0x43 ./build/lwip.a(api_lib.o)
+                0x0000000040216d78       0x43 ./build/lwip.a(api_lib.o)
                                          0x47 (size before relaxing)
-                0x0000000040216d70                netconn_tcp_recvd
- *fill*         0x0000000040216daf        0x1 
+                0x0000000040216d7c                netconn_tcp_recvd
+ *fill*         0x0000000040216dbb        0x1 
  .text.netconn_send
-                0x0000000040216db0       0x37 ./build/lwip.a(api_lib.o)
+                0x0000000040216dbc       0x37 ./build/lwip.a(api_lib.o)
                                          0x3b (size before relaxing)
-                0x0000000040216db4                netconn_send
- *fill*         0x0000000040216de7        0x1 
+                0x0000000040216dc0                netconn_send
+ *fill*         0x0000000040216df3        0x1 
  .text.netconn_write_vectors_partly
-                0x0000000040216de8       0xd0 ./build/lwip.a(api_lib.o)
+                0x0000000040216df4       0xd0 ./build/lwip.a(api_lib.o)
                                          0xe0 (size before relaxing)
-                0x0000000040216dec                netconn_write_vectors_partly
+                0x0000000040216df8                netconn_write_vectors_partly
  .text.netconn_write_partly
-                0x0000000040216eb8       0x20 ./build/lwip.a(api_lib.o)
+                0x0000000040216ec4       0x20 ./build/lwip.a(api_lib.o)
                                          0x24 (size before relaxing)
-                0x0000000040216eb8                netconn_write_partly
+                0x0000000040216ec4                netconn_write_partly
  .text.netconn_err
-                0x0000000040216ed8       0x31 ./build/lwip.a(api_lib.o)
+                0x0000000040216ee4       0x31 ./build/lwip.a(api_lib.o)
                                          0x3d (size before relaxing)
-                0x0000000040216ed8                netconn_err
- *fill*         0x0000000040216f09        0x3 
+                0x0000000040216ee4                netconn_err
+ *fill*         0x0000000040216f15        0x3 
  .text.netconn_recv_data
-                0x0000000040216f0c       0xdf ./build/lwip.a(api_lib.o)
+                0x0000000040216f18       0xdf ./build/lwip.a(api_lib.o)
                                          0xff (size before relaxing)
- *fill*         0x0000000040216feb        0x1 
+ *fill*         0x0000000040216ff7        0x1 
  .text.netconn_recv_udp_raw_netbuf_flags
-                0x0000000040216fec       0x2f ./build/lwip.a(api_lib.o)
+                0x0000000040216ff8       0x2f ./build/lwip.a(api_lib.o)
                                          0x37 (size before relaxing)
-                0x0000000040216fec                netconn_recv_udp_raw_netbuf_flags
- *fill*         0x000000004021701b        0x1 
+                0x0000000040216ff8                netconn_recv_udp_raw_netbuf_flags
+ *fill*         0x0000000040217027        0x1 
  .text.netconn_recv_data_tcp
-                0x000000004021701c       0xc1 ./build/lwip.a(api_lib.o)
+                0x0000000040217028       0xc1 ./build/lwip.a(api_lib.o)
                                          0xd9 (size before relaxing)
- *fill*         0x00000000402170dd        0x3 
+ *fill*         0x00000000402170e9        0x3 
  .text.netconn_recv_tcp_pbuf_flags
-                0x00000000402170e0       0x2f ./build/lwip.a(api_lib.o)
+                0x00000000402170ec       0x2f ./build/lwip.a(api_lib.o)
                                          0x37 (size before relaxing)
-                0x00000000402170e0                netconn_recv_tcp_pbuf_flags
- *fill*         0x000000004021710f        0x1 
+                0x00000000402170ec                netconn_recv_tcp_pbuf_flags
+ *fill*         0x000000004021711b        0x1 
  .text.netconn_join_leave_group
-                0x0000000040217110       0x46 ./build/lwip.a(api_lib.o)
+                0x000000004021711c       0x46 ./build/lwip.a(api_lib.o)
                                          0x4e (size before relaxing)
-                0x0000000040217114                netconn_join_leave_group
- *fill*         0x0000000040217156        0x2 
+                0x0000000040217120                netconn_join_leave_group
+ *fill*         0x0000000040217162        0x2 
  .text.netbuf_delete
-                0x0000000040217158       0x2f ./build/lwip.a(netbuf.o)
+                0x0000000040217164       0x2f ./build/lwip.a(netbuf.o)
                                          0x37 (size before relaxing)
-                0x0000000040217158                netbuf_delete
- *fill*         0x0000000040217187        0x1 
+                0x0000000040217164                netbuf_delete
+ *fill*         0x0000000040217193        0x1 
  .text.netbuf_alloc
-                0x0000000040217188       0x3f ./build/lwip.a(netbuf.o)
+                0x0000000040217194       0x3f ./build/lwip.a(netbuf.o)
                                          0x4b (size before relaxing)
-                0x0000000040217188                netbuf_alloc
- *fill*         0x00000000402171c7        0x1 
+                0x0000000040217194                netbuf_alloc
+ *fill*         0x00000000402171d3        0x1 
  .text.netbuf_free
-                0x00000000402171c8       0x25 ./build/lwip.a(netbuf.o)
+                0x00000000402171d4       0x25 ./build/lwip.a(netbuf.o)
                                          0x29 (size before relaxing)
-                0x00000000402171c8                netbuf_free
- *fill*         0x00000000402171ed        0x3 
+                0x00000000402171d4                netbuf_free
+ *fill*         0x00000000402171f9        0x3 
  .text.err_to_errno
-                0x00000000402171f0       0x24 ./build/lwip.a(err.o)
-                0x00000000402171f4                err_to_errno
- .text.err_tcp  0x0000000040217214       0xfc ./build/lwip.a(api_msg.o)
+                0x00000000402171fc       0x24 ./build/lwip.a(err.o)
+                0x0000000040217200                err_to_errno
+ .text.err_tcp  0x0000000040217220       0xfc ./build/lwip.a(api_msg.o)
                                         0x118 (size before relaxing)
  .text.lwip_netconn_do_writemore
-                0x0000000040217310      0x21d ./build/lwip.a(api_msg.o)
+                0x000000004021731c      0x21d ./build/lwip.a(api_msg.o)
                                         0x245 (size before relaxing)
- *fill*         0x000000004021752d        0x3 
+ *fill*         0x0000000040217539        0x3 
  .text.lwip_netconn_do_close_internal
-                0x0000000040217530      0x1ca ./build/lwip.a(api_msg.o)
+                0x000000004021753c      0x1ca ./build/lwip.a(api_msg.o)
                                         0x22a (size before relaxing)
- *fill*         0x00000000402176fa        0x2 
+ *fill*         0x0000000040217706        0x2 
  .text.poll_tcp
-                0x00000000402176fc       0x5d ./build/lwip.a(api_msg.o)
+                0x0000000040217708       0x5d ./build/lwip.a(api_msg.o)
                                          0x69 (size before relaxing)
- *fill*         0x0000000040217759        0x3 
+ *fill*         0x0000000040217765        0x3 
  .text.sent_tcp
-                0x000000004021775c       0x61 ./build/lwip.a(api_msg.o)
+                0x0000000040217768       0x61 ./build/lwip.a(api_msg.o)
                                          0x71 (size before relaxing)
- *fill*         0x00000000402177bd        0x3 
+ *fill*         0x00000000402177c9        0x3 
  .text.lwip_netconn_is_err_msg
-                0x00000000402177c0       0x40 ./build/lwip.a(api_msg.o)
-                0x00000000402177cc                lwip_netconn_is_err_msg
+                0x00000000402177cc       0x40 ./build/lwip.a(api_msg.o)
+                0x00000000402177d8                lwip_netconn_is_err_msg
  .text.netconn_free
-                0x0000000040217800       0x25 ./build/lwip.a(api_msg.o)
+                0x000000004021780c       0x25 ./build/lwip.a(api_msg.o)
                                          0x31 (size before relaxing)
-                0x0000000040217800                netconn_free
- *fill*         0x0000000040217825        0x3 
+                0x000000004021780c                netconn_free
+ *fill*         0x0000000040217831        0x3 
  .text.netconn_drain
-                0x0000000040217828       0xd3 ./build/lwip.a(api_msg.o)
+                0x0000000040217834       0xd3 ./build/lwip.a(api_msg.o)
                                         0x10f (size before relaxing)
- *fill*         0x00000000402178fb        0x1 
+ *fill*         0x0000000040217907        0x1 
  .text.lwip_netconn_do_delconn
-                0x00000000402178fc       0xa2 ./build/lwip.a(api_msg.o)
+                0x0000000040217908       0xa2 ./build/lwip.a(api_msg.o)
                                          0xca (size before relaxing)
-                0x00000000402178fc                lwip_netconn_do_delconn
- *fill*         0x000000004021799e        0x2 
+                0x0000000040217908                lwip_netconn_do_delconn
+ *fill*         0x00000000402179aa        0x2 
  .text.lwip_netconn_do_send
-                0x00000000402179a0       0x58 ./build/lwip.a(api_msg.o)
+                0x00000000402179ac       0x58 ./build/lwip.a(api_msg.o)
                                          0x6c (size before relaxing)
-                0x00000000402179a0                lwip_netconn_do_send
+                0x00000000402179ac                lwip_netconn_do_send
  .text.lwip_netconn_do_recv
-                0x00000000402179f8       0x52 ./build/lwip.a(api_msg.o)
+                0x0000000040217a04       0x52 ./build/lwip.a(api_msg.o)
                                          0x5e (size before relaxing)
-                0x00000000402179f8                lwip_netconn_do_recv
- *fill*         0x0000000040217a4a        0x2 
+                0x0000000040217a04                lwip_netconn_do_recv
+ *fill*         0x0000000040217a56        0x2 
  .text.lwip_netconn_do_write
-                0x0000000040217a4c       0x6e ./build/lwip.a(api_msg.o)
+                0x0000000040217a58       0x6e ./build/lwip.a(api_msg.o)
                                          0x92 (size before relaxing)
-                0x0000000040217a4c                lwip_netconn_do_write
- *fill*         0x0000000040217aba        0x2 
+                0x0000000040217a58                lwip_netconn_do_write
+ *fill*         0x0000000040217ac6        0x2 
  .text.lwip_netconn_do_close
-                0x0000000040217abc       0x78 ./build/lwip.a(api_msg.o)
+                0x0000000040217ac8       0x78 ./build/lwip.a(api_msg.o)
                                          0x98 (size before relaxing)
-                0x0000000040217abc                lwip_netconn_do_close
+                0x0000000040217ac8                lwip_netconn_do_close
  .text.lwip_netconn_do_join_leave_group
-                0x0000000040217b34       0x54 ./build/lwip.a(api_msg.o)
+                0x0000000040217b40       0x54 ./build/lwip.a(api_msg.o)
                                          0x5c (size before relaxing)
-                0x0000000040217b34                lwip_netconn_do_join_leave_group
+                0x0000000040217b40                lwip_netconn_do_join_leave_group
  .text.gpio_enable
-                0x0000000040217b88      0x15c ./build/core.a(esp_gpio.o)
+                0x0000000040217b94      0x15c ./build/core.a(esp_gpio.o)
                                         0x170 (size before relaxing)
-                0x0000000040217b8c                gpio_enable
+                0x0000000040217b98                gpio_enable
  .text.gpio_set_pullup
-                0x0000000040217ce4       0x48 ./build/core.a(esp_gpio.o)
+                0x0000000040217cf0       0x48 ./build/core.a(esp_gpio.o)
                                          0x50 (size before relaxing)
-                0x0000000040217ce4                gpio_set_pullup
- .text          0x0000000040217d2c      0x122 ./build/libgcc.a(_cmpsf2.o)
-                0x0000000040217d2c                __nesf2
-                0x0000000040217d2c                __eqsf2
-                0x0000000040217d54                __gtsf2
-                0x0000000040217d74                __lesf2
-                0x0000000040217dc0                __gesf2
-                0x0000000040217de0                __ltsf2
-                0x0000000040217e2c                __unordsf2
- *fill*         0x0000000040217e4e        0x2 
- .text          0x0000000040217e50       0x40 ./build/libgcc.a(_fixsfsi.o)
-                0x0000000040217e50                __fixsfsi
- .text          0x0000000040217e90      0x169 ./build/libgcc.a(_cmpdf2.o)
-                0x0000000040217e90                __eqdf2
-                0x0000000040217e90                __nedf2
-                0x0000000040217ec0                __gtdf2
-                0x0000000040217ee4                __ledf2
-                0x0000000040217f48                __gedf2
-                0x0000000040217f6c                __ltdf2
-                0x0000000040217fd0                __unorddf2
- *fill*         0x0000000040217ff9        0x3 
- .text          0x0000000040217ffc       0x59 ./build/libgcc.a(_fixunsdfsi.o)
-                0x0000000040217ffc                __fixunsdfsi
- *fill*         0x0000000040218055        0x3 
- .text          0x0000000040218058       0x21 ./build/libgcc.a(_popcountsi2.o)
-                0x0000000040218058                __popcountsi2
- *fill*         0x0000000040218079        0x3 
- .text          0x000000004021807c      0x10c ./build/libc.a(lib_a-snprintf.o)
-                0x000000004021807c                _sniprintf_r
-                0x000000004021807c                _snprintf_r
-                0x0000000040218100                snprintf
-                0x0000000040218100                sniprintf
- .text          0x0000000040218188       0x3b ./build/libc.a(lib_a-strrchr.o)
-                0x0000000040218188                strrchr
- *fill*         0x00000000402181c3        0x1 
+                0x0000000040217cf0                gpio_set_pullup
+ .text          0x0000000040217d38      0x122 ./build/libgcc.a(_cmpsf2.o)
+                0x0000000040217d38                __nesf2
+                0x0000000040217d38                __eqsf2
+                0x0000000040217d60                __gtsf2
+                0x0000000040217d80                __lesf2
+                0x0000000040217dcc                __gesf2
+                0x0000000040217dec                __ltsf2
+                0x0000000040217e38                __unordsf2
+ *fill*         0x0000000040217e5a        0x2 
+ .text          0x0000000040217e5c       0x40 ./build/libgcc.a(_fixsfsi.o)
+                0x0000000040217e5c                __fixsfsi
+ .text          0x0000000040217e9c      0x169 ./build/libgcc.a(_cmpdf2.o)
+                0x0000000040217e9c                __eqdf2
+                0x0000000040217e9c                __nedf2
+                0x0000000040217ecc                __gtdf2
+                0x0000000040217ef0                __ledf2
+                0x0000000040217f54                __gedf2
+                0x0000000040217f78                __ltdf2
+                0x0000000040217fdc                __unorddf2
+ *fill*         0x0000000040218005        0x3 
+ .text          0x0000000040218008       0x59 ./build/libgcc.a(_fixunsdfsi.o)
+                0x0000000040218008                __fixunsdfsi
+ *fill*         0x0000000040218061        0x3 
+ .text          0x0000000040218064       0x21 ./build/libgcc.a(_popcountsi2.o)
+                0x0000000040218064                __popcountsi2
+ *fill*         0x0000000040218085        0x3 
+ .text          0x0000000040218088      0x10c ./build/libc.a(lib_a-snprintf.o)
+                0x0000000040218088                _sniprintf_r
+                0x0000000040218088                _snprintf_r
+                0x000000004021810c                snprintf
+                0x000000004021810c                sniprintf
+ .text          0x0000000040218194       0x3b ./build/libc.a(lib_a-strrchr.o)
+                0x0000000040218194                strrchr
+ *fill*         0x00000000402181cf        0x1 
  .text.pcf8574_port_write
-                0x00000000402181c4       0x23 ./build/pcf8574.a(pcf8574.o)
+                0x00000000402181d0       0x23 ./build/pcf8574.a(pcf8574.o)
                                          0x27 (size before relaxing)
-                0x00000000402181c4                pcf8574_port_write
- *fill*         0x00000000402181e7        0x1 
+                0x00000000402181d0                pcf8574_port_write
+ *fill*         0x00000000402181f3        0x1 
  .rodata.str1.4
-                0x00000000402181e8       0x3a ./build/open_esplibs_libmain.a(timers.o)
- *fill*         0x0000000040218222        0x0 
- *fill*         0x0000000040218222        0x2 
+                0x00000000402181f4       0x3a ./build/open_esplibs_libmain.a(timers.o)
+ *fill*         0x000000004021822e        0x0 
+ *fill*         0x000000004021822e        0x2 
  .rodata.str1.4
-                0x0000000040218224       0x6f ./build/open_esplibs_libmain.a(ets_timer.o)
- *fill*         0x0000000040218293        0x0 
- *fill*         0x0000000040218293        0x1 
+                0x0000000040218230       0x6f ./build/open_esplibs_libmain.a(ets_timer.o)
+ *fill*         0x000000004021829f        0x0 
+ *fill*         0x000000004021829f        0x1 
  .text.sdk_ets_timer_setfn
-                0x0000000040218294       0x10 ./build/open_esplibs_libmain.a(ets_timer.o)
-                0x0000000040218294                sdk_ets_timer_setfn
- *fill*         0x00000000402182a4        0x0 
- *fill*         0x00000000402182a4        0x0 
- *fill*         0x00000000402182a4        0x0 
+                0x00000000402182a0       0x10 ./build/open_esplibs_libmain.a(ets_timer.o)
+                0x00000000402182a0                sdk_ets_timer_setfn
+ *fill*         0x00000000402182b0        0x0 
+ *fill*         0x00000000402182b0        0x0 
+ *fill*         0x00000000402182b0        0x0 
  .text.sdk_uart_buff_switch
-                0x00000000402182a4        0x2 ./build/open_esplibs_libmain.a(uart.o)
-                0x00000000402182a4                sdk_uart_buff_switch
- *fill*         0x00000000402182a6        0x2 
+                0x00000000402182b0        0x2 ./build/open_esplibs_libmain.a(uart.o)
+                0x00000000402182b0                sdk_uart_buff_switch
+ *fill*         0x00000000402182b2        0x2 
  .text.sdk_Uart_Init
-                0x00000000402182a8        0x2 ./build/open_esplibs_libmain.a(uart.o)
-                0x00000000402182a8                sdk_Uart_Init
- *fill*         0x00000000402182aa        0x0 
- *fill*         0x00000000402182aa        0x0 
- *fill*         0x00000000402182aa        0x0 
- *fill*         0x00000000402182aa        0x0 
- *fill*         0x00000000402182aa        0x0 
- *fill*         0x00000000402182aa        0x2 
+                0x00000000402182b4        0x2 ./build/open_esplibs_libmain.a(uart.o)
+                0x00000000402182b4                sdk_Uart_Init
+ *fill*         0x00000000402182b6        0x0 
+ *fill*         0x00000000402182b6        0x0 
+ *fill*         0x00000000402182b6        0x0 
+ *fill*         0x00000000402182b6        0x0 
+ *fill*         0x00000000402182b6        0x0 
+ *fill*         0x00000000402182b6        0x2 
  .rodata.str1.4
-                0x00000000402182ac      0x132 ./build/open_esplibs_libmain.a(user_interface.o)
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x0 
- *fill*         0x00000000402183de        0x2 
+                0x00000000402182b8      0x132 ./build/open_esplibs_libmain.a(user_interface.o)
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x0 
+ *fill*         0x00000000402183ea        0x2 
  .rodata.str1.4
-                0x00000000402183e0       0x56 ./build/open_esplibs_libwpa.a(wpa_main.o)
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x0 
- *fill*         0x0000000040218436        0x2 
+                0x00000000402183ec       0x56 ./build/open_esplibs_libwpa.a(wpa_main.o)
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x0 
+ *fill*         0x0000000040218442        0x2 
  .text.vListInitialise
-                0x0000000040218438       0x15 ./build/freertos.a(list.o)
-                0x0000000040218438                vListInitialise
- *fill*         0x000000004021844d        0x3 
+                0x0000000040218444       0x15 ./build/freertos.a(list.o)
+                0x0000000040218444                vListInitialise
+ *fill*         0x0000000040218459        0x3 
  .text.vListInitialiseItem
-                0x0000000040218450        0x6 ./build/freertos.a(list.o)
-                0x0000000040218450                vListInitialiseItem
- *fill*         0x0000000040218456        0x2 
+                0x000000004021845c        0x6 ./build/freertos.a(list.o)
+                0x000000004021845c                vListInitialiseItem
+ *fill*         0x0000000040218462        0x2 
  .text.vListInsertEnd
-                0x0000000040218458       0x1e ./build/freertos.a(list.o)
-                0x0000000040218458                vListInsertEnd
- *fill*         0x0000000040218476        0x2 
+                0x0000000040218464       0x1e ./build/freertos.a(list.o)
+                0x0000000040218464                vListInsertEnd
+ *fill*         0x0000000040218482        0x2 
  .text.vListInsert
-                0x0000000040218478       0x32 ./build/freertos.a(list.o)
-                0x0000000040218478                vListInsert
- *fill*         0x00000000402184aa        0x2 
+                0x0000000040218484       0x32 ./build/freertos.a(list.o)
+                0x0000000040218484                vListInsert
+ *fill*         0x00000000402184b6        0x2 
  .text.uxListRemove
-                0x00000000402184ac       0x2b ./build/freertos.a(list.o)
-                0x00000000402184ac                uxListRemove
- *fill*         0x00000000402184d7        0x0 
- *fill*         0x00000000402184d7        0x0 
- *fill*         0x00000000402184d7        0x0 
- *fill*         0x00000000402184d7        0x0 
- *fill*         0x00000000402184d7        0x1 
+                0x00000000402184b8       0x2b ./build/freertos.a(list.o)
+                0x00000000402184b8                uxListRemove
+ *fill*         0x00000000402184e3        0x0 
+ *fill*         0x00000000402184e3        0x0 
+ *fill*         0x00000000402184e3        0x0 
+ *fill*         0x00000000402184e3        0x0 
+ *fill*         0x00000000402184e3        0x1 
  .rodata.str1.4
-                0x00000000402184d8       0x6a ./build/lwip.a(sys_arch.o)
- *fill*         0x0000000040218542        0x0 
- *fill*         0x0000000040218542        0x0 
- *fill*         0x0000000040218542        0x0 
- *fill*         0x0000000040218542        0x2 
+                0x00000000402184e4       0x6a ./build/lwip.a(sys_arch.o)
+ *fill*         0x000000004021854e        0x0 
+ *fill*         0x000000004021854e        0x0 
+ *fill*         0x000000004021854e        0x0 
+ *fill*         0x000000004021854e        0x2 
  .text.sys_init
-                0x0000000040218544        0x2 ./build/lwip.a(sys_arch.o)
-                0x0000000040218544                sys_init
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x0 
- *fill*         0x0000000040218546        0x2 
+                0x0000000040218550        0x2 ./build/lwip.a(sys_arch.o)
+                0x0000000040218550                sys_init
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x0 
+ *fill*         0x0000000040218552        0x2 
  .rodata.str1.4
-                0x0000000040218548        0xd ./build/lwip.a(tcpip.o)
- *fill*         0x0000000040218555        0x3 
+                0x0000000040218554        0xd ./build/lwip.a(tcpip.o)
+ *fill*         0x0000000040218561        0x3 
  .text.mem_init
-                0x0000000040218558        0x2 ./build/lwip.a(mem.o)
-                0x0000000040218558                mem_init
- *fill*         0x000000004021855a        0x2 
+                0x0000000040218564        0x2 ./build/lwip.a(mem.o)
+                0x0000000040218564                mem_init
+ *fill*         0x0000000040218566        0x2 
  .text.mem_trim
-                0x000000004021855c        0x2 ./build/lwip.a(mem.o)
-                0x000000004021855c                mem_trim
- *fill*         0x000000004021855e        0x0 
- *fill*         0x000000004021855e        0x0 
- *fill*         0x000000004021855e        0x0 
- *fill*         0x000000004021855e        0x0 
- *fill*         0x000000004021855e        0x2 
+                0x0000000040218568        0x2 ./build/lwip.a(mem.o)
+                0x0000000040218568                mem_trim
+ *fill*         0x000000004021856a        0x0 
+ *fill*         0x000000004021856a        0x0 
+ *fill*         0x000000004021856a        0x0 
+ *fill*         0x000000004021856a        0x0 
+ *fill*         0x000000004021856a        0x2 
  .text.memp_init
-                0x0000000040218560        0x2 ./build/lwip.a(memp.o)
-                0x0000000040218560                memp_init
- *fill*         0x0000000040218562        0x0 
- *fill*         0x0000000040218562        0x0 
- *fill*         0x0000000040218562        0x2 
+                0x000000004021856c        0x2 ./build/lwip.a(memp.o)
+                0x000000004021856c                memp_init
+ *fill*         0x000000004021856e        0x0 
+ *fill*         0x000000004021856e        0x0 
+ *fill*         0x000000004021856e        0x2 
  .rodata.memp_pools
-                0x0000000040218564       0x3c ./build/lwip.a(memp.o)
-                0x0000000040218564                memp_pools
+                0x0000000040218570       0x3c ./build/lwip.a(memp.o)
+                0x0000000040218570                memp_pools
  .rodata.memp_PBUF_POOL
-                0x00000000402185a0        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185a0                memp_PBUF_POOL
- *fill*         0x00000000402185a2        0x2 
- .rodata.memp_PBUF
-                0x00000000402185a4        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185a4                memp_PBUF
- *fill*         0x00000000402185a6        0x2 
- .rodata.memp_NETDB
-                0x00000000402185a8        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185a8                memp_NETDB
- *fill*         0x00000000402185aa        0x2 
- .rodata.memp_SYS_TIMEOUT
                 0x00000000402185ac        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185ac                memp_SYS_TIMEOUT
+                0x00000000402185ac                memp_PBUF_POOL
  *fill*         0x00000000402185ae        0x2 
- .rodata.memp_IGMP_GROUP
+ .rodata.memp_PBUF
                 0x00000000402185b0        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185b0                memp_IGMP_GROUP
+                0x00000000402185b0                memp_PBUF
  *fill*         0x00000000402185b2        0x2 
- .rodata.memp_ARP_QUEUE
+ .rodata.memp_NETDB
                 0x00000000402185b4        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185b4                memp_ARP_QUEUE
+                0x00000000402185b4                memp_NETDB
  *fill*         0x00000000402185b6        0x2 
- .rodata.memp_TCPIP_MSG_INPKT
+ .rodata.memp_SYS_TIMEOUT
                 0x00000000402185b8        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185b8                memp_TCPIP_MSG_INPKT
+                0x00000000402185b8                memp_SYS_TIMEOUT
  *fill*         0x00000000402185ba        0x2 
- .rodata.memp_TCPIP_MSG_API
+ .rodata.memp_IGMP_GROUP
                 0x00000000402185bc        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185bc                memp_TCPIP_MSG_API
+                0x00000000402185bc                memp_IGMP_GROUP
  *fill*         0x00000000402185be        0x2 
- .rodata.memp_NETCONN
+ .rodata.memp_ARP_QUEUE
                 0x00000000402185c0        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185c0                memp_NETCONN
+                0x00000000402185c0                memp_ARP_QUEUE
  *fill*         0x00000000402185c2        0x2 
- .rodata.memp_NETBUF
+ .rodata.memp_TCPIP_MSG_INPKT
                 0x00000000402185c4        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185c4                memp_NETBUF
+                0x00000000402185c4                memp_TCPIP_MSG_INPKT
  *fill*         0x00000000402185c6        0x2 
- .rodata.memp_REASSDATA
+ .rodata.memp_TCPIP_MSG_API
                 0x00000000402185c8        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185c8                memp_REASSDATA
+                0x00000000402185c8                memp_TCPIP_MSG_API
  *fill*         0x00000000402185ca        0x2 
- .rodata.memp_TCP_SEG
+ .rodata.memp_NETCONN
                 0x00000000402185cc        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185cc                memp_TCP_SEG
+                0x00000000402185cc                memp_NETCONN
  *fill*         0x00000000402185ce        0x2 
- .rodata.memp_TCP_PCB_LISTEN
+ .rodata.memp_NETBUF
                 0x00000000402185d0        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185d0                memp_TCP_PCB_LISTEN
+                0x00000000402185d0                memp_NETBUF
  *fill*         0x00000000402185d2        0x2 
- .rodata.memp_TCP_PCB
+ .rodata.memp_REASSDATA
                 0x00000000402185d4        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185d4                memp_TCP_PCB
+                0x00000000402185d4                memp_REASSDATA
  *fill*         0x00000000402185d6        0x2 
- .rodata.memp_UDP_PCB
+ .rodata.memp_TCP_SEG
                 0x00000000402185d8        0x2 ./build/lwip.a(memp.o)
-                0x00000000402185d8                memp_UDP_PCB
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
- *fill*         0x00000000402185da        0x0 
+                0x00000000402185d8                memp_TCP_SEG
  *fill*         0x00000000402185da        0x2 
+ .rodata.memp_TCP_PCB_LISTEN
+                0x00000000402185dc        0x2 ./build/lwip.a(memp.o)
+                0x00000000402185dc                memp_TCP_PCB_LISTEN
+ *fill*         0x00000000402185de        0x2 
+ .rodata.memp_TCP_PCB
+                0x00000000402185e0        0x2 ./build/lwip.a(memp.o)
+                0x00000000402185e0                memp_TCP_PCB
+ *fill*         0x00000000402185e2        0x2 
+ .rodata.memp_UDP_PCB
+                0x00000000402185e4        0x2 ./build/lwip.a(memp.o)
+                0x00000000402185e4                memp_UDP_PCB
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x0 
+ *fill*         0x00000000402185e6        0x2 
  .text.tcp_eff_send_mss_netif
-                0x00000000402185dc       0x26 ./build/lwip.a(tcp.o)
-                0x00000000402185dc                tcp_eff_send_mss_netif
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x0 
- *fill*         0x0000000040218602        0x2 
+                0x00000000402185e8       0x26 ./build/lwip.a(tcp.o)
+                0x00000000402185e8                tcp_eff_send_mss_netif
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x0 
+ *fill*         0x000000004021860e        0x2 
  .rodata.tcp_pcb_lists
-                0x0000000040218604       0x10 ./build/lwip.a(tcp.o)
-                0x0000000040218604                tcp_pcb_lists
+                0x0000000040218610       0x10 ./build/lwip.a(tcp.o)
+                0x0000000040218610                tcp_pcb_lists
  .rodata.tcp_persist_backoff
-                0x0000000040218614        0x7 ./build/lwip.a(tcp.o)
- *fill*         0x000000004021861b        0x1 
+                0x0000000040218620        0x7 ./build/lwip.a(tcp.o)
+ *fill*         0x0000000040218627        0x1 
  .rodata.tcp_backoff
-                0x000000004021861c        0xd ./build/lwip.a(tcp.o)
- *fill*         0x0000000040218629        0x0 
- *fill*         0x0000000040218629        0x0 
- *fill*         0x0000000040218629        0x0 
- *fill*         0x0000000040218629        0x3 
+                0x0000000040218628        0xd ./build/lwip.a(tcp.o)
+ *fill*         0x0000000040218635        0x0 
+ *fill*         0x0000000040218635        0x0 
+ *fill*         0x0000000040218635        0x0 
+ *fill*         0x0000000040218635        0x3 
  .text.dns_init
-                0x000000004021862c        0x2 ./build/lwip.a(dns.o)
-                0x000000004021862c                dns_init
- *fill*         0x000000004021862e        0x0 
- *fill*         0x000000004021862e        0x2 
+                0x0000000040218638        0x2 ./build/lwip.a(dns.o)
+                0x0000000040218638                dns_init
+ *fill*         0x000000004021863a        0x0 
+ *fill*         0x000000004021863a        0x2 
  .rodata.dns_mquery_v4group
-                0x0000000040218630        0x4 ./build/lwip.a(dns.o)
-                0x0000000040218630                dns_mquery_v4group
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
- *fill*         0x0000000040218634        0x0 
+                0x000000004021863c        0x4 ./build/lwip.a(dns.o)
+                0x000000004021863c                dns_mquery_v4group
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
+ *fill*         0x0000000040218640        0x0 
  .rodata.lwip_cyclic_timers
-                0x0000000040218634       0x38 ./build/lwip.a(timeouts.o)
-                0x0000000040218634                lwip_cyclic_timers
- *fill*         0x000000004021866c        0x0 
- *fill*         0x000000004021866c        0x0 
- *fill*         0x000000004021866c        0x0 
+                0x0000000040218640       0x38 ./build/lwip.a(timeouts.o)
+                0x0000000040218640                lwip_cyclic_timers
+ *fill*         0x0000000040218678        0x0 
+ *fill*         0x0000000040218678        0x0 
+ *fill*         0x0000000040218678        0x0 
  .rodata.tcp_parseopt$part$0
-                0x000000004021866c       0x24 ./build/lwip.a(tcp_in.o)
- *fill*         0x0000000040218690        0x0 
- *fill*         0x0000000040218690        0x0 
- *fill*         0x0000000040218690        0x0 
+                0x0000000040218678       0x24 ./build/lwip.a(tcp_in.o)
+ *fill*         0x000000004021869c        0x0 
+ *fill*         0x000000004021869c        0x0 
+ *fill*         0x000000004021869c        0x0 
  .rodata.tcp_input
-                0x0000000040218690       0x20 ./build/lwip.a(tcp_in.o)
+                0x000000004021869c       0x20 ./build/lwip.a(tcp_in.o)
  .text.lwip_htons
-                0x00000000402186b0       0x11 ./build/lwip.a(def.o)
-                0x00000000402186b0                lwip_htons
- *fill*         0x00000000402186c1        0x0 
- *fill*         0x00000000402186c1        0x0 
- *fill*         0x00000000402186c1        0x0 
- *fill*         0x00000000402186c1        0x3 
+                0x00000000402186bc       0x11 ./build/lwip.a(def.o)
+                0x00000000402186bc                lwip_htons
+ *fill*         0x00000000402186cd        0x0 
+ *fill*         0x00000000402186cd        0x0 
+ *fill*         0x00000000402186cd        0x0 
+ *fill*         0x00000000402186cd        0x3 
  .text.netif_init
-                0x00000000402186c4        0x2 ./build/lwip.a(netif.o)
-                0x00000000402186c4                netif_init
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x0 
- *fill*         0x00000000402186c6        0x2 
+                0x00000000402186d0        0x2 ./build/lwip.a(netif.o)
+                0x00000000402186d0                netif_init
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x0 
+ *fill*         0x00000000402186d2        0x2 
  .text.pbuf_clen
-                0x00000000402186c8       0x14 ./build/lwip.a(pbuf.o)
-                0x00000000402186c8                pbuf_clen
- *fill*         0x00000000402186dc        0x0 
+                0x00000000402186d4       0x14 ./build/lwip.a(pbuf.o)
+                0x00000000402186d4                pbuf_clen
+ *fill*         0x00000000402186e8        0x0 
  .text.pbuf_cat
-                0x00000000402186dc       0x3f ./build/lwip.a(pbuf.o)
-                0x00000000402186dc                pbuf_cat
- *fill*         0x000000004021871b        0x0 
- *fill*         0x000000004021871b        0x0 
- *fill*         0x000000004021871b        0x0 
- *fill*         0x000000004021871b        0x0 
- *fill*         0x000000004021871b        0x0 
- *fill*         0x000000004021871b        0x0 
- *fill*         0x000000004021871b        0x1 
+                0x00000000402186e8       0x3f ./build/lwip.a(pbuf.o)
+                0x00000000402186e8                pbuf_cat
+ *fill*         0x0000000040218727        0x0 
+ *fill*         0x0000000040218727        0x0 
+ *fill*         0x0000000040218727        0x0 
+ *fill*         0x0000000040218727        0x0 
+ *fill*         0x0000000040218727        0x0 
+ *fill*         0x0000000040218727        0x0 
+ *fill*         0x0000000040218727        0x1 
  .text.pbuf_put_at
-                0x000000004021871c       0x26 ./build/lwip.a(pbuf.o)
-                0x000000004021871c                pbuf_put_at
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x0 
- *fill*         0x0000000040218742        0x2 
+                0x0000000040218728       0x26 ./build/lwip.a(pbuf.o)
+                0x0000000040218728                pbuf_put_at
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x0 
+ *fill*         0x000000004021874e        0x2 
  .rodata.dhcp_recv
-                0x0000000040218744       0xf0 ./build/lwip.a(dhcp.o)
- *fill*         0x0000000040218834        0x0 
- *fill*         0x0000000040218834        0x0 
- *fill*         0x0000000040218834        0x0 
- *fill*         0x0000000040218834        0x0 
- *fill*         0x0000000040218834        0x0 
+                0x0000000040218750       0xf0 ./build/lwip.a(dhcp.o)
+ *fill*         0x0000000040218840        0x0 
+ *fill*         0x0000000040218840        0x0 
+ *fill*         0x0000000040218840        0x0 
+ *fill*         0x0000000040218840        0x0 
+ *fill*         0x0000000040218840        0x0 
  .text.dhcp_supplied_address
-                0x0000000040218834       0x1e ./build/lwip.a(dhcp.o)
-                0x0000000040218834                dhcp_supplied_address
- *fill*         0x0000000040218852        0x2 
+                0x0000000040218840       0x1e ./build/lwip.a(dhcp.o)
+                0x0000000040218840                dhcp_supplied_address
+ *fill*         0x000000004021885e        0x2 
  .rodata.dhcp_discover_request_options
-                0x0000000040218854        0x4 ./build/lwip.a(dhcp.o)
- *fill*         0x0000000040218858        0x0 
- *fill*         0x0000000040218858        0x0 
- *fill*         0x0000000040218858        0x0 
- *fill*         0x0000000040218858        0x0 
- *fill*         0x0000000040218858        0x0 
- *fill*         0x0000000040218858        0x0 
+                0x0000000040218860        0x4 ./build/lwip.a(dhcp.o)
+ *fill*         0x0000000040218864        0x0 
+ *fill*         0x0000000040218864        0x0 
+ *fill*         0x0000000040218864        0x0 
+ *fill*         0x0000000040218864        0x0 
+ *fill*         0x0000000040218864        0x0 
+ *fill*         0x0000000040218864        0x0 
  .text.ip4_addr_isbroadcast_u32
-                0x0000000040218858       0x35 ./build/lwip.a(ip4_addr.o)
-                0x0000000040218858                ip4_addr_isbroadcast_u32
- *fill*         0x000000004021888d        0x3 
+                0x0000000040218864       0x35 ./build/lwip.a(ip4_addr.o)
+                0x0000000040218864                ip4_addr_isbroadcast_u32
+ *fill*         0x0000000040218899        0x3 
  .rodata.ip_addr_broadcast
-                0x0000000040218890        0x4 ./build/lwip.a(ip4_addr.o)
-                0x0000000040218890                ip_addr_broadcast
+                0x000000004021889c        0x4 ./build/lwip.a(ip4_addr.o)
+                0x000000004021889c                ip_addr_broadcast
  .rodata.ip_addr_any
-                0x0000000040218894        0x4 ./build/lwip.a(ip4_addr.o)
-                0x0000000040218894                ip_addr_any
- *fill*         0x0000000040218898        0x0 
- *fill*         0x0000000040218898        0x0 
- *fill*         0x0000000040218898        0x0 
- *fill*         0x0000000040218898        0x0 
- *fill*         0x0000000040218898        0x0 
- *fill*         0x0000000040218898        0x0 
+                0x00000000402188a0        0x4 ./build/lwip.a(ip4_addr.o)
+                0x00000000402188a0                ip_addr_any
+ *fill*         0x00000000402188a4        0x0 
+ *fill*         0x00000000402188a4        0x0 
+ *fill*         0x00000000402188a4        0x0 
+ *fill*         0x00000000402188a4        0x0 
+ *fill*         0x00000000402188a4        0x0 
+ *fill*         0x00000000402188a4        0x0 
  .text.igmp_lookfor_group
-                0x0000000040218898       0x19 ./build/lwip.a(igmp.o)
-                0x0000000040218898                igmp_lookfor_group
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x0 
- *fill*         0x00000000402188b1        0x3 
+                0x00000000402188a4       0x19 ./build/lwip.a(igmp.o)
+                0x00000000402188a4                igmp_lookfor_group
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x0 
+ *fill*         0x00000000402188bd        0x3 
  .rodata.ethzero
-                0x00000000402188b4        0x6 ./build/lwip.a(ethernet.o)
-                0x00000000402188b4                ethzero
- *fill*         0x00000000402188ba        0x2 
+                0x00000000402188c0        0x6 ./build/lwip.a(ethernet.o)
+                0x00000000402188c0                ethzero
+ *fill*         0x00000000402188c6        0x2 
  .rodata.ethbroadcast
-                0x00000000402188bc        0x6 ./build/lwip.a(ethernet.o)
-                0x00000000402188bc                ethbroadcast
- *fill*         0x00000000402188c2        0x2 
+                0x00000000402188c8        0x6 ./build/lwip.a(ethernet.o)
+                0x00000000402188c8                ethbroadcast
+ *fill*         0x00000000402188ce        0x2 
  .text.lwip_standard_chksum
-                0x00000000402188c4       0x84 ./build/lwip.a(inet_chksum.o)
-                0x00000000402188c4                lwip_standard_chksum
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
- *fill*         0x0000000040218948        0x0 
+                0x00000000402188d0       0x84 ./build/lwip.a(inet_chksum.o)
+                0x00000000402188d0                lwip_standard_chksum
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
+ *fill*         0x0000000040218954        0x0 
  .text._write_filesystem_r
-                0x0000000040218948        0x8 ./build/core.a(newlib_syscalls.o)
-                0x0000000040218948                _write_filesystem_r
+                0x0000000040218954        0x8 ./build/core.a(newlib_syscalls.o)
+                0x0000000040218954                _write_filesystem_r
  .text._read_filesystem_r
-                0x0000000040218950        0x8 ./build/core.a(newlib_syscalls.o)
-                0x0000000040218950                _read_filesystem_r
- *fill*         0x0000000040218958        0x0 
+                0x000000004021895c        0x8 ./build/core.a(newlib_syscalls.o)
+                0x000000004021895c                _read_filesystem_r
+ *fill*         0x0000000040218964        0x0 
  .text._close_filesystem_r
-                0x0000000040218958        0x8 ./build/core.a(newlib_syscalls.o)
-                0x0000000040218958                _close_filesystem_r
- *fill*         0x0000000040218960        0x0 
+                0x0000000040218964        0x8 ./build/core.a(newlib_syscalls.o)
+                0x0000000040218964                _close_filesystem_r
+ *fill*         0x000000004021896c        0x0 
  .text.syscall_returns_enosys
-                0x0000000040218960        0x8 ./build/core.a(newlib_syscalls.o)
-                0x0000000040218960                _lseek_r
-                0x0000000040218960                _stat_r
-                0x0000000040218960                _fstat_r
-                0x0000000040218960                _unlink_r
-                0x0000000040218960                _open_r
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- *fill*         0x0000000040218968        0x0 
- .text          0x0000000040218968       0xba ./build/libc.a(lib_a-fwalk.o)
-                0x0000000040218968                _fwalk
-                0x00000000402189c0                _fwalk_reent
- *fill*         0x0000000040218a22        0x0 
- *fill*         0x0000000040218a22        0x0 
- *fill*         0x0000000040218a22        0x0 
- *fill*         0x0000000040218a22        0x0 
- *fill*         0x0000000040218a22        0x0 
- *fill*         0x0000000040218a22        0x2 
- .text          0x0000000040218a24        0x4 ./build/libc.a(lib_a-nano-malloptr.o)
-                0x0000000040218a24                _mallopt_r
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- *fill*         0x0000000040218a28        0x0 
- .text          0x0000000040218a28       0x17 ./build/libc.a(lib_a-memchr.o)
-                0x0000000040218a28                memchr
- *fill*         0x0000000040218a3f        0x0 
- *fill*         0x0000000040218a3f        0x0 
- *fill*         0x0000000040218a3f        0x1 
- .text          0x0000000040218a40       0x16 ./build/libc.a(lib_a-nano-msizer.o)
-                0x0000000040218a40                _malloc_usable_size_r
- *fill*         0x0000000040218a56        0x0 
- *fill*         0x0000000040218a56        0x2 
+                0x000000004021896c        0x8 ./build/core.a(newlib_syscalls.o)
+                0x000000004021896c                _lseek_r
+                0x000000004021896c                _stat_r
+                0x000000004021896c                _fstat_r
+                0x000000004021896c                _unlink_r
+                0x000000004021896c                _open_r
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ *fill*         0x0000000040218974        0x0 
+ .text          0x0000000040218974       0xba ./build/libc.a(lib_a-fwalk.o)
+                0x0000000040218974                _fwalk
+                0x00000000402189cc                _fwalk_reent
+ *fill*         0x0000000040218a2e        0x0 
+ *fill*         0x0000000040218a2e        0x0 
+ *fill*         0x0000000040218a2e        0x0 
+ *fill*         0x0000000040218a2e        0x0 
+ *fill*         0x0000000040218a2e        0x0 
+ *fill*         0x0000000040218a2e        0x2 
+ .text          0x0000000040218a30        0x4 ./build/libc.a(lib_a-nano-malloptr.o)
+                0x0000000040218a30                _mallopt_r
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ *fill*         0x0000000040218a34        0x0 
+ .text          0x0000000040218a34       0x17 ./build/libc.a(lib_a-memchr.o)
+                0x0000000040218a34                memchr
+ *fill*         0x0000000040218a4b        0x0 
+ *fill*         0x0000000040218a4b        0x0 
+ *fill*         0x0000000040218a4b        0x1 
+ .text          0x0000000040218a4c       0x16 ./build/libc.a(lib_a-nano-msizer.o)
+                0x0000000040218a4c                _malloc_usable_size_r
+ *fill*         0x0000000040218a62        0x0 
+ *fill*         0x0000000040218a62        0x2 
  .rodata.str1.4
-                0x0000000040218a58       0xce ./build/sdklib/libmain.a(user_interface.o)
+                0x0000000040218a64       0xce ./build/sdklib/libmain.a(user_interface.o)
                                         0x1a2 (size before relaxing)
- *fill*         0x0000000040218b26        0x2 
+ *fill*         0x0000000040218b32        0x2 
  .rodata.str1.4
-                0x0000000040218b28       0x3f ./build/sdklib/libnet80211.a(ieee80211.o)
+                0x0000000040218b34       0x3f ./build/sdklib/libnet80211.a(ieee80211.o)
                                          0x4a (size before relaxing)
- *fill*         0x0000000040218b67        0x1 
- .rodata        0x0000000040218b68        0x4 ./build/sdklib/libnet80211.a(ieee80211_hostap.o)
+ *fill*         0x0000000040218b73        0x1 
+ .rodata        0x0000000040218b74        0x4 ./build/sdklib/libnet80211.a(ieee80211_hostap.o)
  .rodata.str1.4
-                0x0000000040218b6c       0x19 ./build/sdklib/libnet80211.a(ieee80211_ht.o)
- *fill*         0x0000000040218b85        0x3 
- .rodata        0x0000000040218b88        0x4 ./build/sdklib/libnet80211.a(ieee80211_output.o)
+                0x0000000040218b78       0x19 ./build/sdklib/libnet80211.a(ieee80211_ht.o)
+ *fill*         0x0000000040218b91        0x3 
+ .rodata        0x0000000040218b94        0x4 ./build/sdklib/libnet80211.a(ieee80211_output.o)
  .rodata.str1.4
-                0x0000000040218b8c       0x27 ./build/sdklib/libnet80211.a(ieee80211_output.o)
+                0x0000000040218b98       0x27 ./build/sdklib/libnet80211.a(ieee80211_output.o)
                                          0x2f (size before relaxing)
- *fill*         0x0000000040218bb3        0xd 
+ *fill*         0x0000000040218bbf        0x1 
  .rodata        0x0000000040218bc0       0x70 ./build/sdklib/libnet80211.a(ieee80211_proto.o)
  .rodata.str1.4
                 0x0000000040218c30       0x24 ./build/sdklib/libnet80211.a(ieee80211_scan.o)
@@ -7397,13 +7397,13 @@ END GROUP
                                          0x7b (size before relaxing)
  .rodata        0x0000000040219988       0x18 ./build/program.a(i2cThread.o)
  *fill*         0x00000000402199a0        0x0 
- .rodata.onOff$5225
+ .rodata.onOff$5227
                 0x00000000402199a0        0x8 ./build/program.a(i2cThread.o)
- .rodata.etChar$5224
+ .rodata.etChar$5226
                 0x00000000402199a8        0x8 ./build/program.a(i2cThread.o)
- .rodata.rgChar$5223
+ .rodata.rgChar$5225
                 0x00000000402199b0        0x8 ./build/program.a(i2cThread.o)
- .rodata.taChar$5222
+ .rodata.taChar$5224
                 0x00000000402199b8        0x8 ./build/program.a(i2cThread.o)
  *fill*         0x00000000402199c0        0x0 
  *fill*         0x00000000402199c0        0x0 
@@ -8490,7 +8490,7 @@ OUTPUT(build/cube_control.out elf32-xtensa-le)
  .debug_frame   0x00000000000084ec       0x20 ./build/libc.a(lib_a-strchr.o)
  .debug_frame   0x000000000000850c       0xec ./build/pcf8574.a(pcf8574.o)
 
-.debug_info     0x0000000000000000    0x8b24d
+.debug_info     0x0000000000000000    0x8b2bb
  .debug_info    0x0000000000000000      0xc7c ./build/open_esplibs_libmain.a(timers.o)
  .debug_info    0x0000000000000c7c     0x1380 ./build/open_esplibs_libmain.a(ets_timer.o)
  .debug_info    0x0000000000001ffc     0x1192 ./build/open_esplibs_libmain.a(spi_flash.o)
@@ -8612,29 +8612,29 @@ OUTPUT(build/cube_control.out elf32-xtensa-le)
  .debug_info    0x00000000000757a7     0x1073 ./build/program.a(main.o)
  .debug_info    0x000000000007681a     0x1a46 ./build/program.a(gui.o)
  .debug_info    0x0000000000078260     0x113b ./build/program.a(inputs.o)
- .debug_info    0x000000000007939b     0x1011 ./build/program.a(i2cThread.o)
- .debug_info    0x000000000007a3ac     0x12bc ./build/i2c.a(i2c.o)
- .debug_info    0x000000000007b668      0xf83 ./build/hd44780.a(hd44780.o)
- .debug_info    0x000000000007c5eb     0x5465 ./build/lwip.a(sockets.o)
- .debug_info    0x0000000000081a50     0x2c02 ./build/lwip.a(api_lib.o)
- .debug_info    0x0000000000084652      0xdcd ./build/lwip.a(netbuf.o)
- .debug_info    0x000000000008541f      0x8a1 ./build/lwip.a(err.o)
- .debug_info    0x0000000000085cc0     0x34da ./build/lwip.a(api_msg.o)
- .debug_info    0x000000000008919a      0x974 ./build/core.a(esp_gpio.o)
- .debug_info    0x0000000000089b0e      0x124 ./build/core.a(esp_iomux.o)
- .debug_info    0x0000000000089c32       0xf7 ./build/libgcc.a(_ashrdi3.o)
- .debug_info    0x0000000000089d29       0xf8 ./build/libgcc.a(_cmpsf2.o)
- .debug_info    0x0000000000089e21       0xf8 ./build/libgcc.a(_fixsfsi.o)
- .debug_info    0x0000000000089f19       0xf8 ./build/libgcc.a(_cmpdf2.o)
- .debug_info    0x000000000008a011       0xf8 ./build/libgcc.a(_fixunsdfsi.o)
- .debug_info    0x000000000008a109       0xff ./build/libgcc.a(_popcountsi2.o)
- .debug_info    0x000000000008a208       0xab ./build/libgcc.a(_popcount_tab.o)
- .debug_info    0x000000000008a2b3      0x9b3 ./build/libc.a(lib_a-snprintf.o)
- .debug_info    0x000000000008ac66      0x101 ./build/libc.a(lib_a-strrchr.o)
- .debug_info    0x000000000008ad67       0xe3 ./build/libc.a(lib_a-strchr.o)
- .debug_info    0x000000000008ae4a      0x403 ./build/pcf8574.a(pcf8574.o)
+ .debug_info    0x000000000007939b     0x107f ./build/program.a(i2cThread.o)
+ .debug_info    0x000000000007a41a     0x12bc ./build/i2c.a(i2c.o)
+ .debug_info    0x000000000007b6d6      0xf83 ./build/hd44780.a(hd44780.o)
+ .debug_info    0x000000000007c659     0x5465 ./build/lwip.a(sockets.o)
+ .debug_info    0x0000000000081abe     0x2c02 ./build/lwip.a(api_lib.o)
+ .debug_info    0x00000000000846c0      0xdcd ./build/lwip.a(netbuf.o)
+ .debug_info    0x000000000008548d      0x8a1 ./build/lwip.a(err.o)
+ .debug_info    0x0000000000085d2e     0x34da ./build/lwip.a(api_msg.o)
+ .debug_info    0x0000000000089208      0x974 ./build/core.a(esp_gpio.o)
+ .debug_info    0x0000000000089b7c      0x124 ./build/core.a(esp_iomux.o)
+ .debug_info    0x0000000000089ca0       0xf7 ./build/libgcc.a(_ashrdi3.o)
+ .debug_info    0x0000000000089d97       0xf8 ./build/libgcc.a(_cmpsf2.o)
+ .debug_info    0x0000000000089e8f       0xf8 ./build/libgcc.a(_fixsfsi.o)
+ .debug_info    0x0000000000089f87       0xf8 ./build/libgcc.a(_cmpdf2.o)
+ .debug_info    0x000000000008a07f       0xf8 ./build/libgcc.a(_fixunsdfsi.o)
+ .debug_info    0x000000000008a177       0xff ./build/libgcc.a(_popcountsi2.o)
+ .debug_info    0x000000000008a276       0xab ./build/libgcc.a(_popcount_tab.o)
+ .debug_info    0x000000000008a321      0x9b3 ./build/libc.a(lib_a-snprintf.o)
+ .debug_info    0x000000000008acd4      0x101 ./build/libc.a(lib_a-strrchr.o)
+ .debug_info    0x000000000008add5       0xe3 ./build/libc.a(lib_a-strchr.o)
+ .debug_info    0x000000000008aeb8      0x403 ./build/pcf8574.a(pcf8574.o)
 
-.debug_abbrev   0x0000000000000000    0x15288
+.debug_abbrev   0x0000000000000000    0x152ae
  .debug_abbrev  0x0000000000000000      0x255 ./build/open_esplibs_libmain.a(timers.o)
  .debug_abbrev  0x0000000000000255      0x3ec ./build/open_esplibs_libmain.a(ets_timer.o)
  .debug_abbrev  0x0000000000000641      0x2eb ./build/open_esplibs_libmain.a(spi_flash.o)
@@ -8756,27 +8756,27 @@ OUTPUT(build/cube_control.out elf32-xtensa-le)
  .debug_abbrev  0x0000000000012609      0x283 ./build/program.a(main.o)
  .debug_abbrev  0x000000000001288c      0x350 ./build/program.a(gui.o)
  .debug_abbrev  0x0000000000012bdc      0x2ef ./build/program.a(inputs.o)
- .debug_abbrev  0x0000000000012ecb      0x2cc ./build/program.a(i2cThread.o)
- .debug_abbrev  0x0000000000013197      0x3ea ./build/i2c.a(i2c.o)
- .debug_abbrev  0x0000000000013581      0x29f ./build/hd44780.a(hd44780.o)
- .debug_abbrev  0x0000000000013820      0x4a6 ./build/lwip.a(sockets.o)
- .debug_abbrev  0x0000000000013cc6      0x48a ./build/lwip.a(api_lib.o)
- .debug_abbrev  0x0000000000014150      0x274 ./build/lwip.a(netbuf.o)
- .debug_abbrev  0x00000000000143c4      0x193 ./build/lwip.a(err.o)
- .debug_abbrev  0x0000000000014557      0x497 ./build/lwip.a(api_msg.o)
- .debug_abbrev  0x00000000000149ee      0x202 ./build/core.a(esp_gpio.o)
- .debug_abbrev  0x0000000000014bf0       0x8a ./build/core.a(esp_iomux.o)
- .debug_abbrev  0x0000000000014c7a       0x14 ./build/libgcc.a(_ashrdi3.o)
- .debug_abbrev  0x0000000000014c8e       0x14 ./build/libgcc.a(_cmpsf2.o)
- .debug_abbrev  0x0000000000014ca2       0x14 ./build/libgcc.a(_fixsfsi.o)
- .debug_abbrev  0x0000000000014cb6       0x14 ./build/libgcc.a(_cmpdf2.o)
- .debug_abbrev  0x0000000000014cca       0x14 ./build/libgcc.a(_fixunsdfsi.o)
- .debug_abbrev  0x0000000000014cde       0x9b ./build/libgcc.a(_popcountsi2.o)
- .debug_abbrev  0x0000000000014d79       0x5d ./build/libgcc.a(_popcount_tab.o)
- .debug_abbrev  0x0000000000014dd6      0x1d1 ./build/libc.a(lib_a-snprintf.o)
- .debug_abbrev  0x0000000000014fa7       0xb2 ./build/libc.a(lib_a-strrchr.o)
- .debug_abbrev  0x0000000000015059       0x83 ./build/libc.a(lib_a-strchr.o)
- .debug_abbrev  0x00000000000150dc      0x1ac ./build/pcf8574.a(pcf8574.o)
+ .debug_abbrev  0x0000000000012ecb      0x2f2 ./build/program.a(i2cThread.o)
+ .debug_abbrev  0x00000000000131bd      0x3ea ./build/i2c.a(i2c.o)
+ .debug_abbrev  0x00000000000135a7      0x29f ./build/hd44780.a(hd44780.o)
+ .debug_abbrev  0x0000000000013846      0x4a6 ./build/lwip.a(sockets.o)
+ .debug_abbrev  0x0000000000013cec      0x48a ./build/lwip.a(api_lib.o)
+ .debug_abbrev  0x0000000000014176      0x274 ./build/lwip.a(netbuf.o)
+ .debug_abbrev  0x00000000000143ea      0x193 ./build/lwip.a(err.o)
+ .debug_abbrev  0x000000000001457d      0x497 ./build/lwip.a(api_msg.o)
+ .debug_abbrev  0x0000000000014a14      0x202 ./build/core.a(esp_gpio.o)
+ .debug_abbrev  0x0000000000014c16       0x8a ./build/core.a(esp_iomux.o)
+ .debug_abbrev  0x0000000000014ca0       0x14 ./build/libgcc.a(_ashrdi3.o)
+ .debug_abbrev  0x0000000000014cb4       0x14 ./build/libgcc.a(_cmpsf2.o)
+ .debug_abbrev  0x0000000000014cc8       0x14 ./build/libgcc.a(_fixsfsi.o)
+ .debug_abbrev  0x0000000000014cdc       0x14 ./build/libgcc.a(_cmpdf2.o)
+ .debug_abbrev  0x0000000000014cf0       0x14 ./build/libgcc.a(_fixunsdfsi.o)
+ .debug_abbrev  0x0000000000014d04       0x9b ./build/libgcc.a(_popcountsi2.o)
+ .debug_abbrev  0x0000000000014d9f       0x5d ./build/libgcc.a(_popcount_tab.o)
+ .debug_abbrev  0x0000000000014dfc      0x1d1 ./build/libc.a(lib_a-snprintf.o)
+ .debug_abbrev  0x0000000000014fcd       0xb2 ./build/libc.a(lib_a-strrchr.o)
+ .debug_abbrev  0x000000000001507f       0x83 ./build/libc.a(lib_a-strchr.o)
+ .debug_abbrev  0x0000000000015102      0x1ac ./build/pcf8574.a(pcf8574.o)
 
 .debug_loc      0x0000000000000000    0x2ea34
  .debug_loc     0x0000000000000000      0x1fd ./build/open_esplibs_libmain.a(timers.o)
@@ -9274,7 +9274,7 @@ OUTPUT(build/cube_control.out elf32-xtensa-le)
  .debug_ranges  0x0000000000003c78       0x18 ./build/core.a(esp_iomux.o)
  .debug_ranges  0x0000000000003c90       0x50 ./build/pcf8574.a(pcf8574.o)
 
-.debug_line     0x0000000000000000    0x32d80
+.debug_line     0x0000000000000000    0x32d90
  .debug_line    0x0000000000000000      0x3c3 ./build/open_esplibs_libmain.a(timers.o)
  .debug_line    0x00000000000003c3      0x611 ./build/open_esplibs_libmain.a(ets_timer.o)
  .debug_line    0x00000000000009d4      0x587 ./build/open_esplibs_libmain.a(spi_flash.o)
@@ -9405,29 +9405,29 @@ OUTPUT(build/cube_control.out elf32-xtensa-le)
  .debug_line    0x000000000002a3a7      0x343 ./build/program.a(main.o)
  .debug_line    0x000000000002a6ea      0x9b2 ./build/program.a(gui.o)
  .debug_line    0x000000000002b09c      0x428 ./build/program.a(inputs.o)
- .debug_line    0x000000000002b4c4      0x370 ./build/program.a(i2cThread.o)
- .debug_line    0x000000000002b834      0x8ce ./build/i2c.a(i2c.o)
- .debug_line    0x000000000002c102      0x546 ./build/hd44780.a(hd44780.o)
- .debug_line    0x000000000002c648     0x251c ./build/lwip.a(sockets.o)
- .debug_line    0x000000000002eb64      0xed6 ./build/lwip.a(api_lib.o)
- .debug_line    0x000000000002fa3a      0x403 ./build/lwip.a(netbuf.o)
- .debug_line    0x000000000002fe3d      0x1ee ./build/lwip.a(err.o)
- .debug_line    0x000000000003002b     0x167c ./build/lwip.a(api_msg.o)
- .debug_line    0x00000000000316a7      0x39d ./build/core.a(esp_gpio.o)
- .debug_line    0x0000000000031a44      0x110 ./build/core.a(esp_iomux.o)
- .debug_line    0x0000000000031b54       0xb9 ./build/libgcc.a(_ashrdi3.o)
- .debug_line    0x0000000000031c0d      0x2fa ./build/libgcc.a(_cmpsf2.o)
- .debug_line    0x0000000000031f07      0x114 ./build/libgcc.a(_fixsfsi.o)
- .debug_line    0x000000000003201b      0x390 ./build/libgcc.a(_cmpdf2.o)
- .debug_line    0x00000000000323ab      0x156 ./build/libgcc.a(_fixunsdfsi.o)
- .debug_line    0x0000000000032501       0xc6 ./build/libgcc.a(_popcountsi2.o)
- .debug_line    0x00000000000325c7       0x7b ./build/libgcc.a(_popcount_tab.o)
- .debug_line    0x0000000000032642      0x2cf ./build/libc.a(lib_a-snprintf.o)
- .debug_line    0x0000000000032911       0xc0 ./build/libc.a(lib_a-strrchr.o)
- .debug_line    0x00000000000329d1       0xd1 ./build/libc.a(lib_a-strchr.o)
- .debug_line    0x0000000000032aa2      0x2de ./build/pcf8574.a(pcf8574.o)
+ .debug_line    0x000000000002b4c4      0x380 ./build/program.a(i2cThread.o)
+ .debug_line    0x000000000002b844      0x8ce ./build/i2c.a(i2c.o)
+ .debug_line    0x000000000002c112      0x546 ./build/hd44780.a(hd44780.o)
+ .debug_line    0x000000000002c658     0x251c ./build/lwip.a(sockets.o)
+ .debug_line    0x000000000002eb74      0xed6 ./build/lwip.a(api_lib.o)
+ .debug_line    0x000000000002fa4a      0x403 ./build/lwip.a(netbuf.o)
+ .debug_line    0x000000000002fe4d      0x1ee ./build/lwip.a(err.o)
+ .debug_line    0x000000000003003b     0x167c ./build/lwip.a(api_msg.o)
+ .debug_line    0x00000000000316b7      0x39d ./build/core.a(esp_gpio.o)
+ .debug_line    0x0000000000031a54      0x110 ./build/core.a(esp_iomux.o)
+ .debug_line    0x0000000000031b64       0xb9 ./build/libgcc.a(_ashrdi3.o)
+ .debug_line    0x0000000000031c1d      0x2fa ./build/libgcc.a(_cmpsf2.o)
+ .debug_line    0x0000000000031f17      0x114 ./build/libgcc.a(_fixsfsi.o)
+ .debug_line    0x000000000003202b      0x390 ./build/libgcc.a(_cmpdf2.o)
+ .debug_line    0x00000000000323bb      0x156 ./build/libgcc.a(_fixunsdfsi.o)
+ .debug_line    0x0000000000032511       0xc6 ./build/libgcc.a(_popcountsi2.o)
+ .debug_line    0x00000000000325d7       0x7b ./build/libgcc.a(_popcount_tab.o)
+ .debug_line    0x0000000000032652      0x2cf ./build/libc.a(lib_a-snprintf.o)
+ .debug_line    0x0000000000032921       0xc0 ./build/libc.a(lib_a-strrchr.o)
+ .debug_line    0x00000000000329e1       0xd1 ./build/libc.a(lib_a-strchr.o)
+ .debug_line    0x0000000000032ab2      0x2de ./build/pcf8574.a(pcf8574.o)
 
-.debug_str      0x0000000000000000     0xd763
+.debug_str      0x0000000000000000     0xd769
  .debug_str     0x0000000000000000      0x656 ./build/open_esplibs_libmain.a(timers.o)
                                         0x789 (size before relaxing)
  .debug_str     0x0000000000000656      0x4c5 ./build/open_esplibs_libmain.a(ets_timer.o)
@@ -9672,36 +9672,36 @@ OUTPUT(build/cube_control.out elf32-xtensa-le)
                                         0xb92 (size before relaxing)
  .debug_str     0x000000000000ba80      0x186 ./build/program.a(inputs.o)
                                         0xbe7 (size before relaxing)
- .debug_str     0x000000000000bc06      0x17c ./build/program.a(i2cThread.o)
-                                        0x99c (size before relaxing)
- .debug_str     0x000000000000bd82      0x1ea ./build/i2c.a(i2c.o)
+ .debug_str     0x000000000000bc06      0x182 ./build/program.a(i2cThread.o)
+                                        0x9d1 (size before relaxing)
+ .debug_str     0x000000000000bd88      0x1ea ./build/i2c.a(i2c.o)
                                         0x700 (size before relaxing)
- .debug_str     0x000000000000bf6c       0xda ./build/hd44780.a(hd44780.o)
+ .debug_str     0x000000000000bf72       0xda ./build/hd44780.a(hd44780.o)
                                         0x704 (size before relaxing)
- .debug_str     0x000000000000c046      0xbc1 ./build/lwip.a(sockets.o)
+ .debug_str     0x000000000000c04c      0xbc1 ./build/lwip.a(sockets.o)
                                        0x1bf3 (size before relaxing)
- .debug_str     0x000000000000cc07      0x224 ./build/lwip.a(api_lib.o)
+ .debug_str     0x000000000000cc0d      0x224 ./build/lwip.a(api_lib.o)
                                        0x125e (size before relaxing)
- .debug_str     0x000000000000ce2b       0x87 ./build/lwip.a(netbuf.o)
+ .debug_str     0x000000000000ce31       0x87 ./build/lwip.a(netbuf.o)
                                         0x8c4 (size before relaxing)
- .debug_str     0x000000000000ceb2       0x4f ./build/lwip.a(err.o)
+ .debug_str     0x000000000000ceb8       0x4f ./build/lwip.a(err.o)
                                         0x5b3 (size before relaxing)
- .debug_str     0x000000000000cf01      0x39f ./build/lwip.a(api_msg.o)
+ .debug_str     0x000000000000cf07      0x39f ./build/lwip.a(api_msg.o)
                                        0x170c (size before relaxing)
- .debug_str     0x000000000000d2a0      0x1c1 ./build/core.a(esp_gpio.o)
+ .debug_str     0x000000000000d2a6      0x1c1 ./build/core.a(esp_gpio.o)
                                         0x658 (size before relaxing)
- .debug_str     0x000000000000d461       0x6c ./build/core.a(esp_iomux.o)
+ .debug_str     0x000000000000d467       0x6c ./build/core.a(esp_iomux.o)
                                         0x1be (size before relaxing)
- .debug_str     0x000000000000d4cd      0x16a ./build/libgcc.a(_popcountsi2.o)
+ .debug_str     0x000000000000d4d3      0x16a ./build/libgcc.a(_popcountsi2.o)
                                         0x1e9 (size before relaxing)
- .debug_str     0x000000000000d637      0x1d3 ./build/libgcc.a(_popcount_tab.o)
- .debug_str     0x000000000000d637       0x38 ./build/libc.a(lib_a-snprintf.o)
+ .debug_str     0x000000000000d63d      0x1d3 ./build/libgcc.a(_popcount_tab.o)
+ .debug_str     0x000000000000d63d       0x38 ./build/libc.a(lib_a-snprintf.o)
                                         0x579 (size before relaxing)
- .debug_str     0x000000000000d66f       0x3b ./build/libc.a(lib_a-strrchr.o)
+ .debug_str     0x000000000000d675       0x3b ./build/libc.a(lib_a-strrchr.o)
                                         0x14f (size before relaxing)
- .debug_str     0x000000000000d6aa       0x2b ./build/libc.a(lib_a-strchr.o)
+ .debug_str     0x000000000000d6b0       0x2b ./build/libc.a(lib_a-strchr.o)
                                         0x141 (size before relaxing)
- .debug_str     0x000000000000d6d5       0x8e ./build/pcf8574.a(pcf8574.o)
+ .debug_str     0x000000000000d6db       0x8e ./build/pcf8574.a(pcf8574.o)
                                         0x290 (size before relaxing)
 
 .comment        0x0000000000000000     0x10c0
