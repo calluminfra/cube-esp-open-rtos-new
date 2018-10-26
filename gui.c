@@ -52,7 +52,7 @@ extern QueueHandle_t xI2CQueue;
 
 /*Thread draws to LCD based on index*/
 void drawDisplayThread(void *pvParameters) {
-
+  printf("Starting draw display thread\r\n");
   procVars.procType = 2;
 
   // Printing buffers/structures for Message queue to I2C
@@ -301,6 +301,7 @@ void drawDisplayThread(void *pvParameters) {
 /*This thread holds an image of the current menu level and will update variables
  * based on user decisions*/
 void updateParametersThread(void *pvParameters) {
+  printf("Starting update parameters thread\r\n");
   QueueHandle_t *queue = (QueueHandle_t *)pvParameters;
   menuVars.bottomElement = 1;
 

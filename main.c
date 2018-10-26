@@ -29,6 +29,7 @@
 // Queues
 QueueHandle_t buttonQueue;
 QueueHandle_t xI2CQueue;
+QueueHandle_t xGPIOForProcQueue;
 
 // Counting Semaphores
 SemaphoreHandle_t i2CCountingSemaphore;
@@ -53,34 +54,11 @@ void user_init(void) {
   uart_set_baud(0, 115200);
   i2c_init(I2C_BUS, SCL_PIN, SDA_PIN, I2C_FREQ_100K);
   i2c_set_clock_stretch(I2C_BUS, 300);
-  /*
-    uint8_t devAddr = 0x20;
-    uint8_t mCPBuffer[] = {0x06, 0xFF};
-
-    int err = i2c_slave_write(I2C_BUS, devAddr, NULL, &mCPBuffer, 2);
-    if (err != 0) {
-      printf("Error, MCP slave has not been set up as inputs\r\n");
-    } else {
-      printf("MCP setup correctly\r\n");
-    }
-  */
-  /*
-  dataBuffer[0] = 0;
-  err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
-  if (err != 0) {
-    printf("oops2\r\n");
-  }
-  err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
-  if (err != 0) {
-    printf("oops3\r\n");
-  } else {
-    printf("%2x\r\n", dataBuffer[0]);
-  }
-  */
 
   /*Create Queues*/
   buttonQueue = xQueueCreate(20, sizeof(uint32_t));
   xI2CQueue = xQueueCreate(100, sizeof(struct I2CVarsStruct *));
+  xGPIOForProcQueue = xQueueCreate(20, sizeof(uint8_t));
 
   // Create and take semaphore to initially block print thread
   vSemaphoreCreateBinary(printSemaphore);
@@ -100,11 +78,12 @@ void user_init(void) {
   i2CMutex = xSemaphoreCreateMutex();
 
   // Initialise threads
-
+  printf("Starting Setup Thread\r\n");
   xTaskCreate(updateParametersThread, "updtParam", 1024, &buttonQueue, 2, NULL);
   xTaskCreate(drawDisplayThread, "drawDsp", 4095, NULL, 2, NULL);
   xTaskCreate(i2CThread, "i2c", 4095, NULL, 1, NULL);
   xTaskCreate(buttonPollThread, "btnPoll", 1024, &buttonQueue, 2, NULL);
 
   enterNewMenu(0);
+  xSemaphoreGive(printSemaphore);
 }

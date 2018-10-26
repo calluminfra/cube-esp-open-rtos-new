@@ -17,6 +17,7 @@
 
 extern SemaphoreHandle_t i2CMutex;
 extern SemaphoreHandle_t i2CCountingSemaphore2;
+extern QueueHandle_t xGPIOForProcQueue;
 
 void i2CThread(void *pvParameters) {
   // Setup various I2C stuff HERE
@@ -71,6 +72,7 @@ void i2CThread(void *pvParameters) {
       taskEXIT_CRITICAL();
     }
     vTaskDelayUntil(&lastWakeTime, xFreq);
+    static uint8_t lastGPIOBuffer = 0;
     taskENTER_CRITICAL();
     dataBuffer[0] = 0;
     err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
@@ -81,9 +83,18 @@ void i2CThread(void *pvParameters) {
     if (err != 0) {
       printf("couldn't read from slave\r\n");
     } else {
-      printf("%2x, %2x\r\n", dataBuffer[0], dataBuffer[1]);
+      // printf("%2x, %2x\r\n", dataBuffer[0], dataBuffer[1]);
     }
     taskEXIT_CRITICAL();
+    // static uint8_t *pDataBuffer;
+    if (dataBuffer[0] != lastGPIOBuffer && dataBuffer[0] != 0) {
+      // Send value to thread for processing
+
+      uint8_t txDataBuffer = dataBuffer[0];
+      // pDataBuffer = &txDataBuffer;
+      xQueueSend(xGPIOForProcQueue, &txDataBuffer, 10);
+    }
+    lastGPIOBuffer = dataBuffer[0];
   }
 
   // Wait for message queue here to print to LCD
@@ -120,6 +131,6 @@ uint8_t pollButtonsI2C() {
   } else {
     printf("Couldn't acquire mutex in button poll\r\n");
   }
-  return 0;
   */
+  return 0;
 }

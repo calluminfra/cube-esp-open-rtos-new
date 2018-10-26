@@ -15,6 +15,7 @@
 #include <task.h>
 
 extern SemaphoreHandle_t i2CCountingSemaphore;
+extern QueueHandle_t xGPIOForProcQueue;
 
 /*Thread reads temperature and places into current temp variable*/
 void thermocoupleReadThread(void *pvParameters) {
@@ -52,69 +53,138 @@ void buttonPollThread(void *pvParameters) {
   static uint8_t currentAState = 0;
 
   // Timing definitions for 10ms polls
-  TickType_t lastWakeTime;
-  const TickType_t tickFreq = 20 / portTICK_PERIOD_MS;
-  lastWakeTime = xTaskGetTickCount();
+  // TickType_t lastWakeTime;
+  // const TickType_t tickFreq = 20 / portTICK_PERIOD_MS;
+  // lastWakeTime = xTaskGetTickCount();
 
   QueueHandle_t *queue = (QueueHandle_t *)pvParameters;
 
   struct buttonPressQueue sentFromButtonPollThread;
   struct buttonPressQueue *pSentFromButtonPollThread;
   sentFromButtonPollThread.opType = buttonThreadMessage;
+
+  uint8_t *rxButton;
+
+  static uint8_t selButtonState, backButtonState, rotaryLPin, rotaryRPin;
+
   while (1) {
+    // Wait for update to
+    if (xQueueReceive(xGPIOForProcQueue, &(rxButton), 2)) {
+      printf("!!!%2x\r\n", rxButton);
+      uint8_t buttonMask = rxButton;
+      buttonMask = buttonMask >> 4;
+      rotaryLPin = (buttonMask & 0b1000) >> 3;
+      rotaryRPin = (buttonMask & 0b0100) >> 2;
+      backButtonState = (buttonMask & 0b0010) >> 1;
+      selButtonState = buttonMask & 0b0001;
+      printf("Buttons = %d, %d, %d, %d\r\n", rotaryLPin, rotaryRPin,
+             backButtonState, selButtonState);
 
-    /*!!SWITCH TO ISR!!*/
-    if (gpio_read(enterButton) == 1 && selectStateHistory == 0) {
-      if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-        sentFromButtonPollThread.data.buttonOperation = 1;
-        pSentFromButtonPollThread = &sentFromButtonPollThread;
-        xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-        selectStateHistory = 1;
-      }
-    } else if (gpio_read(enterButton) == 0 && selectStateHistory == 1) {
-      selectStateHistory = 0;
-    }
-
-    if (gpio_read(backButton) == 1 && backStateMaskHistory == 0) {
-      if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-        sentFromButtonPollThread.data.buttonOperation = 2;
-        pSentFromButtonPollThread = &sentFromButtonPollThread;
-        xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-        backStateMaskHistory = 1;
-      }
-    } else if (gpio_read(backButton) == 0 && backStateMaskHistory == 1) {
-      backStateMaskHistory = 0;
-    }
-
-    // Check Rotary encoder for movement
-    currentAState = gpio_read(rotaryA);
-    // Check for edge
-    if (previousAState == 0 && currentAState == 1) {
-      // Rotation was CCW
-      uint8_t currentBState = gpio_read(rotaryB);
-      if (currentBState == 0) {
+      if (selButtonState == 1 && selectStateHistory == 0) {
         if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-          sentFromButtonPollThread.data.buttonOperation = 4;
+          sentFromButtonPollThread.data.buttonOperation = 1;
           pSentFromButtonPollThread = &sentFromButtonPollThread;
           xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-        } else {
-          printf("Couldn't access i2c counting semaphore\r\n");
+          selectStateHistory = 1;
         }
-        // Place message in queue for proc thread
+      } else if (selButtonState == 0 && selectStateHistory == 1) {
+        selectStateHistory = 0;
       }
-      // Rotation was CW
-      else {
+
+      if (backButtonState == 1 && backStateMaskHistory == 0) {
         if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-          sentFromButtonPollThread.data.buttonOperation = 3;
+          sentFromButtonPollThread.data.buttonOperation = 2;
           pSentFromButtonPollThread = &sentFromButtonPollThread;
           xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+          backStateMaskHistory = 1;
+        }
+      } else if (backButtonState == 0 && backStateMaskHistory == 1) {
+        backStateMaskHistory = 0;
+      }
+
+      // NEED TO FIX ROTARY ENCODER!!!
+      uint8_t inChange = 0;
+
+      if ((rotaryLPin != 1) && (rotaryRPin != 1) && (inChange == 0)) {
+        if (rotaryLPin == 0) {
+          // CCW
+          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+            sentFromButtonPollThread.data.buttonOperation = 4;
+            pSentFromButtonPollThread = &sentFromButtonPollThread;
+            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+          } else {
+            printf("Couldn't access i2c counting semaphore\r\n");
+          }
+        } else {
+          // CW
+          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+            sentFromButtonPollThread.data.buttonOperation = 3;
+            pSentFromButtonPollThread = &sentFromButtonPollThread;
+            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+            // Place message in queue for proc thread
+          } else {
+            printf("Couldn't access i2c counting semaphore\r\n");
+          }
+        }
+        inChange = 1;
+      } else {
+        inChange = 0;
+      }
+      // Check Rotary encoder for movement
+      /*
+      // Check for edge
+      if (previousAState == 0 && rotaryLPin == 1) {
+        // Rotation was CCW
+        if (rotaryRPin == 0) {
+          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+            sentFromButtonPollThread.data.buttonOperation = 4;
+            pSentFromButtonPollThread = &sentFromButtonPollThread;
+            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+          } else {
+            printf("Couldn't access i2c counting semaphore\r\n");
+          }
           // Place message in queue for proc thread
         }
+        // Rotation was CW
+        else {
+          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+            sentFromButtonPollThread.data.buttonOperation = 3;
+            pSentFromButtonPollThread = &sentFromButtonPollThread;
+            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+            // Place message in queue for proc thread
+          }
+        }
       }
-    }
-    previousAState = currentAState;
+      */
+      /*
+            currentAState = gpio_read(rotaryA);
+          // Check for edge
+          if (previousAState == 0 && currentAState == 1) {
+            // Rotation was CCW
+            uint8_t currentBState = gpio_read(rotaryB);
+            if (currentBState == 0) {
+              if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+                sentFromButtonPollThread.data.buttonOperation = 4;
+                pSentFromButtonPollThread = &sentFromButtonPollThread;
+                xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+              } else {
+                printf("Couldn't access i2c counting semaphore\r\n");
+              }
+              // Place message in queue for proc thread
+            }
+            // Rotation was CW
+            else {
+              if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+                sentFromButtonPollThread.data.buttonOperation = 3;
+                pSentFromButtonPollThread = &sentFromButtonPollThread;
+                xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+                // Place message in queue for proc thread
+              }
+            }
+      }
 
-    // Mask every 10ms
-    vTaskDelayUntil(&lastWakeTime, tickFreq);
+            */
+      previousAState = currentAState;
+    }
   }
 }
