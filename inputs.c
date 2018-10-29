@@ -103,9 +103,9 @@ void buttonPollThread(void *pvParameters) {
       }
 
       // NEED TO FIX ROTARY ENCODER!!!
-      uint8_t inChange = 0;
+      static uint8_t inChange = 0;
 
-      if ((rotaryLPin != 1) && (rotaryRPin != 1) && (inChange == 0)) {
+      if (((rotaryLPin != 1) || (rotaryRPin != 1)) && (inChange == 0)) {
         if (rotaryLPin == 0) {
           // CCW
           if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
