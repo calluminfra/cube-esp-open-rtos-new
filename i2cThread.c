@@ -77,24 +77,27 @@ void i2CThread(void *pvParameters) {
     dataBuffer[0] = 0;
     err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
     if (err != 0) {
-      printf("Could address the slave to prep read\r\n");
-    }
-    err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
-    if (err != 0) {
-      printf("couldn't read from slave\r\n");
+      printf("Couldn't address the slave to prep read\r\n");
     } else {
-      // printf("%2x, %2x\r\n", dataBuffer[0], dataBuffer[1]);
+      err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
+      if (err != 0) {
+        printf("couldn't read from slave\r\n");
+      } else {
+        // printf("%2x, %2x\r\n", dataBuffer[0], dataBuffer[1]);
+        if (dataBuffer[0] != lastGPIOBuffer &&
+            (dataBuffer[0] != 0x00 && dataBuffer[0] != 0xFF)) {
+          // Send value to thread for processing
+
+          uint8_t txDataBuffer = dataBuffer[0];
+          // pDataBuffer = &txDataBuffer;
+          xQueueSend(xGPIOForProcQueue, &txDataBuffer, 10);
+        }
+        lastGPIOBuffer = dataBuffer[0];
+      }
     }
+
     taskEXIT_CRITICAL();
     // static uint8_t *pDataBuffer;
-    if (dataBuffer[0] != lastGPIOBuffer && dataBuffer[0] != 0) {
-      // Send value to thread for processing
-
-      uint8_t txDataBuffer = dataBuffer[0];
-      // pDataBuffer = &txDataBuffer;
-      xQueueSend(xGPIOForProcQueue, &txDataBuffer, 10);
-    }
-    lastGPIOBuffer = dataBuffer[0];
   }
 
   // Wait for message queue here to print to LCD
@@ -110,27 +113,4 @@ void sendLCDOutI2C() {}
 
 void sendThermoOutI2C() {}
 
-uint8_t pollButtonsI2C() {
-  /*
-  uint8_t devAddr = 0x20;
-  uint8_t dataBuffer[4] = {0x06, 0xFF, 0, 0};
-
-  if (xSemaphoreTake(i2CMutex, 1) == pdTRUE) {
-    dataBuffer[0] = 0;
-    int err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
-    if (err != 0) {
-      printf("Could address the slave to prep read\r\n");
-    }
-    err = i2c_slave_read(I2C_BUS, devAddr, NULL, &dataBuffer, 4);
-    if (err != 0) {
-      printf("couldn't read from slave\r\n");
-    } else {
-      printf("%2x, %2x\r\n", dataBuffer[0], dataBuffer[1]);
-    }
-    xSemaphoreGive(i2CMutex);
-  } else {
-    printf("Couldn't acquire mutex in button poll\r\n");
-  }
-  */
-  return 0;
-}
+uint8_t pollButtonsI2C() { return 0; }

@@ -130,60 +130,6 @@ void buttonPollThread(void *pvParameters) {
       } else {
         inChange = 0;
       }
-      // Check Rotary encoder for movement
-      /*
-      // Check for edge
-      if (previousAState == 0 && rotaryLPin == 1) {
-        // Rotation was CCW
-        if (rotaryRPin == 0) {
-          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-            sentFromButtonPollThread.data.buttonOperation = 4;
-            pSentFromButtonPollThread = &sentFromButtonPollThread;
-            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-          } else {
-            printf("Couldn't access i2c counting semaphore\r\n");
-          }
-          // Place message in queue for proc thread
-        }
-        // Rotation was CW
-        else {
-          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-            sentFromButtonPollThread.data.buttonOperation = 3;
-            pSentFromButtonPollThread = &sentFromButtonPollThread;
-            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-            // Place message in queue for proc thread
-          }
-        }
-      }
-      */
-      /*
-            currentAState = gpio_read(rotaryA);
-          // Check for edge
-          if (previousAState == 0 && currentAState == 1) {
-            // Rotation was CCW
-            uint8_t currentBState = gpio_read(rotaryB);
-            if (currentBState == 0) {
-              if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-                sentFromButtonPollThread.data.buttonOperation = 4;
-                pSentFromButtonPollThread = &sentFromButtonPollThread;
-                xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-              } else {
-                printf("Couldn't access i2c counting semaphore\r\n");
-              }
-              // Place message in queue for proc thread
-            }
-            // Rotation was CW
-            else {
-              if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-                sentFromButtonPollThread.data.buttonOperation = 3;
-                pSentFromButtonPollThread = &sentFromButtonPollThread;
-                xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-                // Place message in queue for proc thread
-              }
-            }
-      }
-
-            */
       previousAState = currentAState;
     }
   }
