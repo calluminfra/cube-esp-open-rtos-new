@@ -52,12 +52,50 @@ void i2CThread(void *pvParameters) {
       .lines = 2,
       .pins = {.rs = 0, .e = 2, .d4 = 4, .d5 = 5, .d6 = 6, .d7 = 7, .bl = 3},
       .backlight = true};
-
+  taskENTER_CRITICAL();
   hd44780_init(&lcd);
   hd44780_upload_character(&lcd, 0, taChar);
   hd44780_upload_character(&lcd, 1, rgChar);
   hd44780_upload_character(&lcd, 2, etChar);
   hd44780_upload_character(&lcd, 3, onOff);
+  taskEXIT_CRITICAL();
+
+  /// Write configuration to SC18IS602B
+  taskENTER_CRITICAL();
+  // Config
+  dataBuffer[0] = 0xf0;
+  dataBuffer[1] = 0x2;
+  err = i2c_slave_write(I2C_BUS, SC18IS602B, NULL, &dataBuffer, 2);
+  if (err != 0) {
+    printf("Couldn't set SPI int\r\n");
+  }
+  dataBuffer[0] = 0x1;
+  dataBuffer[1] = 0xFF;
+  dataBuffer[2] = 0xFF;
+  err = i2c_slave_write(I2C_BUS, SC18IS602B, NULL, &dataBuffer, 3);
+  if (err != 0) {
+    printf("Couldn't init SPI read\r\n");
+  }
+  taskEXIT_CRITICAL();
+
+  vTaskDelay(4);
+
+  taskENTER_CRITICAL();
+  uint8_t tempBuffer[8] = {1};
+  err = i2c_slave_read(I2C_BUS, SC18IS602B, NULL, &tempBuffer, 2);
+  if (err != 0) {
+    printf("Couldn't read SPI buffer\r\n");
+  } else {
+    uint16_t tempInt = tempBuffer[0];
+    tempInt = tempInt << 8;
+    tempInt = tempInt | tempBuffer[1];
+    tempInt = tempInt >> 3;
+    float temp = tempInt * 0.25;
+    printf("%2x, %2x\r\n", tempBuffer[0], tempBuffer[1]);
+    printf("Temp = %.2f degrees\r\n", temp);
+  }
+
+  taskEXIT_CRITICAL();
 
   struct I2CVarsStruct *rxI2CVars;
   extern QueueHandle_t xI2CQueue;
@@ -99,14 +137,6 @@ void i2CThread(void *pvParameters) {
     taskEXIT_CRITICAL();
     // static uint8_t *pDataBuffer;
   }
-
-  // Wait for message queue here to print to LCD
-
-  // Wait on semaphore for button polls
-  // Send message to print thread & processing thread
-
-  // Wait on semaphore for Temp reading
-  // Send to the correct proc thread
 }
 
 void sendLCDOutI2C() {}
