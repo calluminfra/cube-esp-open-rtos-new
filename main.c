@@ -33,7 +33,6 @@ QueueHandle_t xGPIOForProcQueue;
 
 // Counting Semaphores
 SemaphoreHandle_t i2CCountingSemaphore;
-SemaphoreHandle_t i2CCountingSemaphore2;
 
 // Binary Semaphores
 SemaphoreHandle_t printSemaphore;
@@ -66,7 +65,6 @@ void user_init(void) {
 
   // Create counting semaphore for use by I2C threads
   i2CCountingSemaphore = xSemaphoreCreateCounting(1, 1);
-  i2CCountingSemaphore2 = xSemaphoreCreateCounting(1, 1);
 
   // Create Mutex's for handling access to datastructures
   pIDMutex = xSemaphoreCreateMutex();
@@ -80,9 +78,10 @@ void user_init(void) {
   // Initialise threads
   printf("Starting Setup Thread\r\n");
   xTaskCreate(updateParametersThread, "updtParam", 1024, &buttonQueue, 2, NULL);
-  xTaskCreate(drawDisplayThread, "drawDsp", 4095, NULL, 2, NULL);
-  xTaskCreate(i2CThread, "i2c", 4095, NULL, 1, NULL);
+  xTaskCreate(drawDisplayThread, "drawDsp", 2048, NULL, 2, NULL);
+  xTaskCreate(i2CThread, "i2c", 2048, NULL, 1, NULL);
   xTaskCreate(buttonPollThread, "btnPoll", 1024, &buttonQueue, 2, NULL);
+  xTaskCreate(pwmOutputThread, "pwm", 1024, NULL, 5, NULL);
 
   enterNewMenu(0);
   xSemaphoreGive(printSemaphore);

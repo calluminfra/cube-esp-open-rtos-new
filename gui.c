@@ -53,7 +53,6 @@ extern QueueHandle_t xI2CQueue;
 /*Thread draws to LCD based on index*/
 void drawDisplayThread(void *pvParameters) {
   printf("Starting draw display thread\r\n");
-  procVars.procType = 2;
 
   // Printing buffers/structures for Message queue to I2C
   static struct I2CVarsStruct i2CVars;
@@ -548,8 +547,6 @@ void moveSelectorDown(uint8_t sizeOfMenuStrings) {
         }
       }
     }
-    printf("Sel = %d, top = %d, bot = %d\r\n", menuVars.selectorPos,
-           menuVars.topElement, menuVars.bottomElement);
     xSemaphoreGive(menuVarsMutex);
   } else {
     printf("Menu mutex could not be accessed and selector has not been moved "
@@ -579,8 +576,6 @@ void moveSelectorUp(uint8_t sizeOfMenuStrings) {
         }
       }
     }
-    printf("Sel = %d, top = %d, bot = %d\r\n", menuVars.selectorPos,
-           menuVars.topElement, menuVars.bottomElement);
     xSemaphoreGive(menuVarsMutex);
   } else {
     printf("Menu mutex could not be accessed and selector has not been moved "

@@ -16,10 +16,12 @@
 #include <task.h>
 
 extern SemaphoreHandle_t i2CMutex;
-extern SemaphoreHandle_t i2CCountingSemaphore2;
 extern QueueHandle_t xGPIOForProcQueue;
+extern SemaphoreHandle_t temperatureVarsMutex;
+extern SemaphoreHandle_t printSemaphore;
 
 void i2CThread(void *pvParameters) {
+  printf("Starting I2C Thread\r\n");
   // Setup various I2C stuff HERE
   TickType_t lastWakeTime;
   const TickType_t xFreq = 20 / portTICK_PERIOD_MS;
@@ -76,15 +78,16 @@ void i2CThread(void *pvParameters) {
 
   while (1) {
     static uint8_t tempIttCounter = 0;
+    // Redraw LCD
     if (xQueueReceive(xI2CQueue, &(rxI2CVars), 0)) {
-      // uint8_t testVar1 = pollButtonsI2C();
       taskENTER_CRITICAL();
-      printf("%s\r\n", rxI2CVars->dataForI2CQueue);
       hd44780_gotoxy(&lcd, 0, rxI2CVars->printRow);
       hd44780_puts(&lcd, rxI2CVars->dataForI2CQueue);
       taskEXIT_CRITICAL();
     }
     vTaskDelayUntil(&lastWakeTime, xFreq);
+
+    // Poll Buttons
     static uint8_t lastGPIOBuffer = 0;
     taskENTER_CRITICAL();
     dataBuffer[0] = 0;
@@ -96,13 +99,10 @@ void i2CThread(void *pvParameters) {
       if (err != 0) {
         printf("couldn't read from slave\r\n");
       } else {
-        // printf("%2x, %2x\r\n", dataBuffer[0], dataBuffer[1]);
         if (dataBuffer[0] != lastGPIOBuffer &&
             (dataBuffer[0] != 0x00 && dataBuffer[0] != 0xFF)) {
           // Send value to thread for processing
-
           uint8_t txDataBuffer = dataBuffer[0];
-          // pDataBuffer = &txDataBuffer;
           xQueueSend(xGPIOForProcQueue, &txDataBuffer, 10);
         }
         lastGPIOBuffer = dataBuffer[0];
@@ -110,7 +110,7 @@ void i2CThread(void *pvParameters) {
     }
 
     taskEXIT_CRITICAL();
-
+    // Poll Thermocouple ever 1s
     if (tempIttCounter >= 50) {
       taskENTER_CRITICAL();
       dataBuffer[0] = 0x1;
@@ -122,12 +122,13 @@ void i2CThread(void *pvParameters) {
       }
       taskEXIT_CRITICAL();
 
-      vTaskDelay(4);
+      vTaskDelayUntil(&lastWakeTime, xFreq);
 
       taskENTER_CRITICAL();
 
       uint8_t tempBuffer[8] = {1};
       err = i2c_slave_read(I2C_BUS, SC18IS602B, NULL, &tempBuffer, 2);
+      taskEXIT_CRITICAL();
       if (err != 0) {
         printf("Couldn't read SPI buffer\r\n");
       } else {
@@ -137,9 +138,15 @@ void i2CThread(void *pvParameters) {
         tempInt = tempInt >> 3;
         float temp = tempInt * 0.25;
         tempInt = (int)temp;
-        printf("Temp = %d degrees\r\n", tempInt);
+        if (xSemaphoreTake(temperatureVarsMutex, 20) == pdTRUE) {
+          temperatureVars.currentTemperature = tempInt;
+          xSemaphoreGive(temperatureVarsMutex);
+          xSemaphoreGive(printSemaphore);
+        } else {
+          printf("Couldn't store new temperature\r\n");
+        }
       }
-      taskEXIT_CRITICAL();
+
       tempIttCounter = 0;
     } else {
       tempIttCounter++;

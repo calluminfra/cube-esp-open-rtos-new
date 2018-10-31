@@ -98,6 +98,6 @@ build/program//burnerControl.o: \
  ../../FreeRTOS/Source/include/task.h \
  ../../FreeRTOS/Source/include/list.h burnerControl.h gui.h \
  ../../extras/i2c/../hd44780/hd44780.h i2cThread.h inputs.h \
- ../../FreeRTOS/Source/include/queue.h \
+ ../../extras/pwm/pwm.h ../../FreeRTOS/Source/include/queue.h \
  ../../FreeRTOS/Source/include/semphr.h \
  ../../FreeRTOS/Source/include/queue.h

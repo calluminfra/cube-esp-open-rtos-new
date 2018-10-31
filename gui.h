@@ -32,6 +32,7 @@ struct OnOffVarsStruct {
   float onVoltage;
   float offVoltage;
   uint8_t onOffSteppingRate;
+  uint16_t steppingTemperature;
 } onOffVars;
 
 struct VControlVarsStruct {
