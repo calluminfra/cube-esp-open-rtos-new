@@ -54,16 +54,16 @@ void i2CThread(void *pvParameters) {
       .lines = 2,
       .pins = {.rs = 0, .e = 2, .d4 = 4, .d5 = 5, .d6 = 6, .d7 = 7, .bl = 3},
       .backlight = true};
-  taskENTER_CRITICAL();
+  // taskENTER_CRITICAL();
   hd44780_init(&lcd);
   hd44780_upload_character(&lcd, 0, taChar);
   hd44780_upload_character(&lcd, 1, rgChar);
   hd44780_upload_character(&lcd, 2, etChar);
   hd44780_upload_character(&lcd, 3, onOff);
-  taskEXIT_CRITICAL();
+  //  taskEXIT_CRITICAL();
 
   /// Write configuration to SC18IS602B
-  taskENTER_CRITICAL();
+  // taskENTER_CRITICAL();
   // Setup Thermocouple
   dataBuffer[0] = 0xf0;
   dataBuffer[1] = 0x2;
@@ -71,7 +71,7 @@ void i2CThread(void *pvParameters) {
   if (err != 0) {
     printf("Couldn't set SPI int\r\n");
   }
-  taskEXIT_CRITICAL();
+  // taskEXIT_CRITICAL();
 
   struct I2CVarsStruct *rxI2CVars;
   extern QueueHandle_t xI2CQueue;
@@ -80,16 +80,16 @@ void i2CThread(void *pvParameters) {
     static uint8_t tempIttCounter = 0;
     // Redraw LCD
     if (xQueueReceive(xI2CQueue, &(rxI2CVars), 0)) {
-      taskENTER_CRITICAL();
+      //  taskENTER_CRITICAL();
       hd44780_gotoxy(&lcd, 0, rxI2CVars->printRow);
       hd44780_puts(&lcd, rxI2CVars->dataForI2CQueue);
-      taskEXIT_CRITICAL();
+      //  taskEXIT_CRITICAL();
     }
     vTaskDelayUntil(&lastWakeTime, xFreq);
 
     // Poll Buttons
     static uint8_t lastGPIOBuffer = 0;
-    taskENTER_CRITICAL();
+    //  taskENTER_CRITICAL();
     dataBuffer[0] = 0;
     err = i2c_slave_write(I2C_BUS, devAddr, NULL, &dataBuffer, 1);
     if (err != 0) {
@@ -109,10 +109,11 @@ void i2CThread(void *pvParameters) {
       }
     }
 
-    taskEXIT_CRITICAL();
+    //    taskEXIT_CRITICAL();
     // Poll Thermocouple ever 1s
+
     if (tempIttCounter >= 50) {
-      taskENTER_CRITICAL();
+      //    taskENTER_CRITICAL();
       dataBuffer[0] = 0x1;
       dataBuffer[1] = 0xFF;
       dataBuffer[2] = 0xFF;
@@ -120,15 +121,16 @@ void i2CThread(void *pvParameters) {
       if (err != 0) {
         printf("Couldn't init SPI read\r\n");
       }
-      taskEXIT_CRITICAL();
+      //    taskEXIT_CRITICAL();
 
       vTaskDelayUntil(&lastWakeTime, xFreq);
 
-      taskENTER_CRITICAL();
+      //    taskENTER_CRITICAL();
 
       uint8_t tempBuffer[8] = {1};
       err = i2c_slave_read(I2C_BUS, SC18IS602B, NULL, &tempBuffer, 2);
-      taskEXIT_CRITICAL();
+      //    taskEXIT_CRITICAL();
+
       if (err != 0) {
         printf("Couldn't read SPI buffer\r\n");
       } else {
@@ -138,6 +140,7 @@ void i2CThread(void *pvParameters) {
         tempInt = tempInt >> 3;
         float temp = tempInt * 0.25;
         tempInt = (int)temp;
+
         if (xSemaphoreTake(temperatureVarsMutex, 20) == pdTRUE) {
           temperatureVars.currentTemperature = tempInt;
           xSemaphoreGive(temperatureVarsMutex);
@@ -146,13 +149,10 @@ void i2CThread(void *pvParameters) {
           printf("Couldn't store new temperature\r\n");
         }
       }
-
       tempIttCounter = 0;
     } else {
       tempIttCounter++;
     }
-
-    // static uint8_t *pDataBuffer;
   }
 }
 

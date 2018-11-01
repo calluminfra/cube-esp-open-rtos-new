@@ -48,6 +48,10 @@ SemaphoreHandle_t i2CMutex;
 
 void user_init(void) {
 
+  TickType_t lastWakeTime;
+  const TickType_t xFreq = 50 / portTICK_PERIOD_MS;
+  lastWakeTime = xTaskGetTickCount();
+
   // Init Uart & I2C interfaces
   // Test
   uart_set_baud(0, 115200);

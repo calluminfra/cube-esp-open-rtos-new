@@ -32,8 +32,9 @@ void pwmOutputThread(void *pvParameters) {
   lastWakeTime = xTaskGetTickCount();
 
   printf("Starting pwm\r\n");
+
   uint8_t pwmPin[1];
-  pwmPin[0] = 12;
+  pwmPin[0] = 2;
   // Init PWM at 1 kHz
   pwm_init(1, pwmPin, false);
   pwm_set_freq(1000);
