@@ -24,7 +24,7 @@ void i2CThread(void *pvParameters) {
   printf("Starting I2C Thread\r\n");
   // Setup various I2C stuff HERE
   TickType_t lastWakeTime;
-  const TickType_t xFreq = 20 / portTICK_PERIOD_MS;
+  const TickType_t xFreq = 10 / portTICK_PERIOD_MS;
   lastWakeTime = xTaskGetTickCount();
   // Setup MCP23016 as inputs for all GP0
   uint8_t devAddr = 0x20;

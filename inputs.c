@@ -73,20 +73,28 @@ void buttonPollThread(void *pvParameters) {
         backStateMaskHistory = 0;
       }
 
-      static uint8_t inChange = 0;
-
-      if (((rotaryLPin != 1) || (rotaryRPin != 1)) && (inChange == 0)) {
+      static uint8_t rotState = 0;
+      static int8_t rotDir = 0;
+      if (rotState == 0) {
         if (rotaryLPin == 0) {
           // CCW
-          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
-            sentFromButtonPollThread.data.buttonOperation = 4;
-            pSentFromButtonPollThread = &sentFromButtonPollThread;
-            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
-          } else {
-            printf("Couldn't access i2c counting semaphore\r\n");
-          }
-        } else {
+          rotDir = -1;
+          rotState = 1;
+        } else if (rotaryRPin == 0) {
           // CW
+          rotDir = 1;
+          rotState = 1;
+        }
+      } else if (rotState == 1) {
+        if (rotaryRPin == 1 && rotaryLPin == 1) {
+          // reset
+          rotDir = 0;
+          rotState = 0;
+        } else {
+          rotState = 2;
+        }
+      } else {
+        if (rotDir == 1) {
           if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
             sentFromButtonPollThread.data.buttonOperation = 3;
             pSentFromButtonPollThread = &sentFromButtonPollThread;
@@ -95,10 +103,17 @@ void buttonPollThread(void *pvParameters) {
           } else {
             printf("Couldn't access i2c counting semaphore\r\n");
           }
+        } else {
+          if (xSemaphoreTake(i2CCountingSemaphore, 50) == pdTRUE) {
+            sentFromButtonPollThread.data.buttonOperation = 4;
+            pSentFromButtonPollThread = &sentFromButtonPollThread;
+            xQueueSend(*queue, &pSentFromButtonPollThread, 0);
+          } else {
+            printf("Couldn't access i2c counting semaphore\r\n");
+          }
         }
-        inChange = 1;
-      } else {
-        inChange = 0;
+        rotDir = 0;
+        rotState = 0;
       }
     }
   }
